@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="app_name">Termo</string>
+  <string name="widget_name_1x1">Termo (1x1)</string>
+  <string name="widget_name_2x1">Termo (2x1)</string>
+  <string name="strCaption">Current temp</string>
+  <string name="strGraphDescription">Temp graph</string>
+  <string name="strText">Not ready</string>
+  <string name="strWidgetText">N/A</string>
+  <string name="strWidgetTor">N/T</string>
+  <string name="menu_settings">Settings</string>
+  <string name="btnRequest">ReRequest</string>
+  <string name="strUrlGraph">http://termo.tomsk.ru/img.png</string>
+  <string name="strDoRequest">Do Request</string>
+  <string name="strNoNetwork">No network</string>
+  <string name="btnWidShow">S</string>
+  <string name="btnWidRefresh">R</string>
+    
+</resources>

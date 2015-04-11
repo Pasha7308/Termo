@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@drawable/back"
+    android:layout_margin="@dimen/widget_margin">
+
+    <TextView
+        android:id="@+id/lblWidgetText"
+        android:text="@string/strWidgetText"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="12dp"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/lblWidgetTor"
+        android:text="@string/strWidgetTor"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="0dp"
+        android:textSize="30sp"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btnWidShow"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+  	    android:layout_gravity="start|top"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button"
+        android:text="@string/btnWidShow" />
+ 	
+ 	<Button
+        android:id="@+id/btnWidRefresh"
+ 	    style="?android:attr/buttonStyleSmall"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+	    android:layout_gravity="end|top"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button"
+        android:text="@string/btnWidRefresh" />
+
+</FrameLayout>
