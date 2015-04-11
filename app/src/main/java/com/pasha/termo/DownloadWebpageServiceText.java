@@ -7,10 +7,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.RemoteViews;
 
-import com.pasha.termo.MainActivity;
-import com.pasha.termo.R;
-import com.pasha.termo.TextDownloader;
-
 public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, String>
 {
 
@@ -43,8 +39,8 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
 
         for (int widgetId : allWidgetIds) {
 
-            RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
-                callerClass.getName().contains("WeatherAppWidgetProvider1x1") ? R.layout.widget_1x1 : R.layout.widget_2x1);
+            boolean is1x1 = callerClass.getName().contains("WeatherAppWidgetProvider1x1");
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
             remoteViews.setTextViewText(R.id.lblWidgetText, currentTemp);
 
             // Register an onClickListener
@@ -59,7 +55,7 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
 
             Intent showIntent = new Intent(context, MainActivity.class);
             PendingIntent pendingIntentShow = PendingIntent.getActivity(context, 0, showIntent, 0);
-            remoteViews.setOnClickPendingIntent(R.id.btnWidShow, pendingIntentShow);
+            remoteViews.setOnClickPendingIntent(is1x1 ? R.id.lay1x1 : R.id.lay2x1, pendingIntentShow);
 
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
