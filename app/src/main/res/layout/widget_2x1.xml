@@ -39,9 +39,7 @@
  	      style="?android:attr/buttonStyleSmall"
         android:layout_width="29dp"
         android:layout_height="29dp"
-	      android:layout_gravity="end|bottom"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button"
-        android:text="@string/btnWidRefresh" />
+        android:layout_gravity="end|bottom"
+        android:background="@drawable/perm_group_sync_settings"/>
 
 </FrameLayout>
