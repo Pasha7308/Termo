@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lay1x1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="72dp"
+    android:layout_height="72dp"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:background="@drawable/back"
@@ -34,8 +34,8 @@
  	<Button
         android:id="@+id/btnWidRefresh"
  	    style="?android:attr/buttonStyleSmall"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
 	    android:layout_gravity="end|bottom"
         android:background="@drawable/perm_group_sync_settings"/>
 
