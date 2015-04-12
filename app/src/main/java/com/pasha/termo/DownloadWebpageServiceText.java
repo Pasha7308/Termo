@@ -42,6 +42,7 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
             boolean is1x1 = callerClass.getName().contains("WeatherAppWidgetProvider1x1");
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
             remoteViews.setTextViewText(R.id.lblWidgetText, currentTemp);
+            remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(currentTemp));
 
             // Register an onClickListener
             Intent clickIntent = new Intent(context, callerClass);
