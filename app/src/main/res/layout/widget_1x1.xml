@@ -17,7 +17,7 @@
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginBottom="12dp"
-        android:textSize="32sp"/>
+        android:textSize="28sp"/>
 
     <TextView
         android:id="@+id/lblWidgetTor"
@@ -34,8 +34,8 @@
  	<Button
         android:id="@+id/btnWidRefresh"
  	    style="?android:attr/buttonStyleSmall"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
 	    android:layout_gravity="end|bottom"
         android:background="@drawable/perm_group_sync_settings"/>
 
