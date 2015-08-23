@@ -10,19 +10,48 @@
         android:text="@string/strCaption" />
 
     <TextView
-        android:id="@+id/lblText"
+        android:id="@+id/lblTextTermo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lblCaption"
+        android:layout_below="@+id/lblCaption"
         android:layout_centerHorizontal="true"
         android:text="@string/strText"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/lblTermo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblCaption"
+        android:layout_centerHorizontal="true"
+        android:text="@string/strTextTemoCaption"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toStartOf="@id/lblTextTermo" />
+
+    <TextView
+        android:id="@+id/lblTextIao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblTextTermo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/strText"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/lblIao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblTextTermo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/strTextIaoCaption"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toStartOf="@id/lblTextIao" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lblText"
+        android:layout_below="@id/lblTextIao"
         android:layout_centerHorizontal="true"
         android:onClick="onRequestButtonPress"
         android:text="@string/btnRequest" />

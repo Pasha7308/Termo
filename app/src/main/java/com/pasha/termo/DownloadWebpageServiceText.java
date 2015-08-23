@@ -21,7 +21,7 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
         context = (Context)objs[1];
         callerClass = (Class)objs[2];
         TextDownloader textDownloader = new TextDownloader();
-        return textDownloader.downloadUrl(TextDownloader.getXmlUrl());
+        return textDownloader.downloadUrl(DownloadWebpageSource.Termo);
     }
 
     protected void onProgressUpdate(

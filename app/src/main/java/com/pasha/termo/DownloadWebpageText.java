@@ -12,14 +12,16 @@ import android.widget.TextView;
 
 public class DownloadWebpageText extends AsyncTask<Object, Integer, String> {
 
-	protected TextView objView;
-	
+    protected TextView objView;
+
     protected String doInBackground(
         Object... objs)
     {
     	objView = (TextView)objs[0];
+        DownloadWebpageSource source = (DownloadWebpageSource)objs[1];
         TextDownloader textDownloader = new TextDownloader();
-        return textDownloader.downloadUrl(TextDownloader.getXmlUrl());
+        return textDownloader.downloadUrl(source);
+
     }
 
     protected void onProgressUpdate(

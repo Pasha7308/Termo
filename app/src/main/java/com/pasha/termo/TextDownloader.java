@@ -12,18 +12,33 @@ import java.net.URL;
 public class TextDownloader {
 
     private static final String LOG = "TextDownloader";
-    static private final String xmlUrl = "http://termo.tomsk.ru/data.xml";
+    static private final String xmlUrlTermo = "http://termo.tomsk.ru/data.xml";
+    static private final String xmlUrlIao = "http://meteo.iao.ru/weather.php?lang=en";
 
-    static public String getXmlUrl()
+    static public String getXmlUrlTermo()
     {
-        return xmlUrl;
+        return xmlUrlTermo;
+    }
+
+    static public String getXmlUrlIao()
+    {
+        return xmlUrlIao;
     }
 
     public String downloadUrl(
-        String strUrl)
+        DownloadWebpageSource source)
     {
         Log.i(LOG, "downloadUrl");
 
+        String strUrl = "";
+        switch (source) {
+            case Termo:
+                strUrl = getXmlUrlTermo();
+                break;
+            case Iao:
+                strUrl = getXmlUrlIao();
+        }
+        String strRet = "";
         try {
             InputStream is = null;
             HttpURLConnection conn = null;
@@ -35,7 +50,15 @@ public class TextDownloader {
                 conn.setReadTimeout(10000); // milliseconds
                 conn.setConnectTimeout(150060); // milliseconds
                 is = conn.getInputStream();
-                return processIt(readIt(is, len));
+                String strIn = readIt(is, len);
+                switch (source) {
+                    case Termo:
+                        strRet = processItTermo(strIn);
+                        break;
+                    case Iao:
+                        strRet = processItIao(strIn);
+                        break;
+                }
             } finally {
                 if (conn != null) {
                     conn.disconnect();
@@ -47,6 +70,7 @@ public class TextDownloader {
         } catch (IOException E) {
             return "N/A";
         }
+        return strRet;
     }
 
     private String readIt(
@@ -60,8 +84,8 @@ public class TextDownloader {
         return new String(buffer);
     }
 
-    public String processIt(
-        String strIn)
+    public String processItTermo(
+            String strIn)
     {
     /*
      * 	     	<current temp="-21.0" date="28.01.2013" time="21:19" change="-"/>
@@ -71,6 +95,20 @@ public class TextDownloader {
         }
         int iStart = strIn.indexOf("<current temp=\"") + "<current temp=\"".length();
         int iFinish = strIn.indexOf("\" date=\"");
+        return strIn.substring(iStart, iFinish);
+    }
+
+    public String processItIao(
+            String strIn)
+    {
+    /*
+     * 	     {"datetime":1440342000,"temp":18,"hum":38,"press":742,"wind_s":2.5,"wind_d":"w","dewp":3.4}
+     */
+        if (!strIn.contains("datetime") || !strIn.contains("temp")) {
+            return "Wrong answer";
+        }
+        int iStart = strIn.indexOf("\"temp\":") + "\"temp\":".length();
+        int iFinish = strIn.indexOf(",\"hum\"");
         return strIn.substring(iStart, iFinish);
     }
 
