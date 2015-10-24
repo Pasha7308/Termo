@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.RemoteViews;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, String>
 {
 
@@ -33,6 +36,8 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
         String currentTemp)
     {
 //        currentTemp = String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
+        SimpleDateFormat sdf = new SimpleDateFormat("HH.mm.ss");
+        String currentTime = sdf.format(Calendar.getInstance().getTime());
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] allWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
@@ -43,6 +48,7 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
             remoteViews.setTextViewText(R.id.lblWidgetText, currentTemp);
             remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(currentTemp));
+            remoteViews.setTextViewText(R.id.lblWidgetTime, currentTime);
 
             // Register an onClickListener
             Intent clickIntent = new Intent(context, callerClass);
@@ -50,8 +56,7 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
             clickIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             clickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
 
-            PendingIntent pendingIntentUpdate = PendingIntent.getBroadcast(context, 0, clickIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntentUpdate = PendingIntent.getBroadcast(context, 0, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             remoteViews.setOnClickPendingIntent(R.id.btnWidRefresh, pendingIntentUpdate);
 
             Intent showIntent = new Intent(context, MainActivity.class);

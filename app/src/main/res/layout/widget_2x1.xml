@@ -42,4 +42,16 @@
         android:layout_gravity="end|bottom"
         android:background="@drawable/perm_group_sync_settings"/>
 
+    <TextView
+        android:id="@+id/lblWidgetTime"
+        android:text="@string/strWidgetTime"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:textColor="@android:color/darker_gray"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="2dp"
+        android:textSize="10sp"/>
+
 </FrameLayout>
