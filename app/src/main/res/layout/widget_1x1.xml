@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lay1x1"
     android:layout_width="72dp"
-    android:layout_height="80dp"
+    android:layout_height="72dp"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:background="@drawable/back"
@@ -13,30 +13,32 @@
         android:text="@string/strWidgetText"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="top|center"
+        android:layout_gravity="top|start"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="24sp"
-        android:layout_marginTop="-3dp"/>
+        android:textSize="28sp"
+        android:layout_marginTop="-4dp"/>
 
     <TextView
         android:id="@+id/lblWidgetTor"
         android:text="@string/strWidgetTor"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom|end"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="24sp"
-        />
+        android:textSize="28sp"
+        android:layout_marginBottom="-3dp"/>
 
  	<Button
         android:id="@+id/btnWidRefresh"
  	    style="?android:attr/buttonStyleSmall"
         android:layout_width="24dp"
         android:layout_height="24dp"
-	    android:layout_gravity="end|bottom"
-        android:background="@drawable/perm_group_sync_settings"/>
+	    android:layout_gravity="top|end"
+        android:background="@drawable/perm_group_sync_settings"
+        android:layout_marginTop="-2dp"
+        android:layout_marginRight="-4dp"/>
 
     <TextView
         android:id="@+id/lblWidgetTime"

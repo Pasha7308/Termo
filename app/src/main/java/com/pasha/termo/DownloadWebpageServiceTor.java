@@ -10,7 +10,7 @@ import android.widget.RemoteViews;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class DownloadWebpageServiceIao extends AsyncTask<Object, Integer, String>
+public class DownloadWebpageServiceTor extends AsyncTask<Object, Integer, String>
 {
 
     protected Intent intent;
@@ -24,7 +24,7 @@ public class DownloadWebpageServiceIao extends AsyncTask<Object, Integer, String
         context = (Context)objs[1];
         callerClass = (Class)objs[2];
         TextDownloader textDownloader = new TextDownloader();
-        return textDownloader.downloadUrl(DownloadWebpageSource.Iao);
+        return textDownloader.downloadUrl(DownloadWebpageSource.Tor);
     }
 
     protected void onProgressUpdate(
@@ -35,9 +35,8 @@ public class DownloadWebpageServiceIao extends AsyncTask<Object, Integer, String
     protected void onPostExecute(
             String currentTemp)
     {
-//        currentTemp = "-23.5";
-        SimpleDateFormat sdf = new SimpleDateFormat("HH.mm");
-        String currentTime = sdf.format(Calendar.getInstance().getTime());
+//        currentTemp = "-24.5";
+        currentTemp = TempRounder.Round(currentTemp);
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] allWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
@@ -45,6 +44,10 @@ public class DownloadWebpageServiceIao extends AsyncTask<Object, Integer, String
         for (int widgetId : allWidgetIds) {
 
             boolean is1x1 = callerClass.getName().contains("WeatherAppWidgetProvider1x1");
+
+            SimpleDateFormat sdf = new SimpleDateFormat(is1x1 ? "HH\nmm" : "HH:mm");
+            String currentTime = sdf.format(Calendar.getInstance().getTime());
+
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
 
             remoteViews.setTextViewText(R.id.lblWidgetTor, currentTemp);

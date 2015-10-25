@@ -28,7 +28,7 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
 
         final int N = appWidgetIds.length;
 
-        String termo = "UPD";
+        String termo = "UP";
 
         for (int i = 0; i < N; i++) {
             RemoteViews views = new RemoteViews(context.getPackageName(),
@@ -45,8 +45,8 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
 
         Intent intent = new Intent(context.getApplicationContext(), this.getClass());
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
-        new DownloadWebpageServiceText().execute(intent, context.getApplicationContext(), this.getClass());
-        new DownloadWebpageServiceIao().execute(intent, context.getApplicationContext(), this.getClass());
+        new DownloadWebpageServiceTermo().execute(intent, context.getApplicationContext(), this.getClass());
+        new DownloadWebpageServiceTor().execute(intent, context.getApplicationContext(), this.getClass());
     }
 
 }

@@ -35,7 +35,7 @@ public class TextDownloader {
             case Termo:
                 strUrl = getXmlUrlTermo();
                 break;
-            case Iao:
+            case Tor:
                 strUrl = getXmlUrlIao();
         }
         String strRet = "";
@@ -55,7 +55,7 @@ public class TextDownloader {
                     case Termo:
                         strRet = processItTermo(strIn);
                         break;
-                    case Iao:
+                    case Tor:
                         strRet = processItIao(strIn);
                         break;
                 }
@@ -95,7 +95,12 @@ public class TextDownloader {
         }
         int iStart = strIn.indexOf("<current temp=\"") + "<current temp=\"".length();
         int iFinish = strIn.indexOf("\" date=\"");
-        return strIn.substring(iStart, iFinish);
+        String temp = strIn.substring(iStart, iFinish);
+        double dTemp = Double.parseDouble(temp);
+        if (dTemp < -10) {
+            dTemp = Math.round(dTemp);
+        }
+        return String.valueOf(dTemp);
     }
 
     public String processItIao(
@@ -109,7 +114,12 @@ public class TextDownloader {
         }
         int iStart = strIn.indexOf("\"temp\":") + "\"temp\":".length();
         int iFinish = strIn.indexOf(",\"hum\"");
-        return strIn.substring(iStart, iFinish);
+        String temp = strIn.substring(iStart, iFinish);
+        double dTemp = Double.parseDouble(temp);
+        if (dTemp < -10) {
+            dTemp = Math.round(dTemp);
+        }
+        return String.valueOf(dTemp);
     }
 
 }

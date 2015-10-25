@@ -66,17 +66,18 @@ public class MainActivity extends Activity {
     public void requestSite()
     {
         TextView lblTextTermo = (TextView) findViewById(R.id.lblTextTermo);
-        TextView lblTextIao = (TextView) findViewById(R.id.lblTextIao);
+        TextView lblTextTor = (TextView) findViewById(R.id.lblTextIao);
      	if (!isNetworkEnabled()) {
             lblTextTermo.setText(getString(R.string.strNoNetwork));
-            lblTextIao.setText(getString(R.string.strNoNetwork));
+            lblTextTor.setText(getString(R.string.strNoNetwork));
          	return;
      	}
-     	lblTextTermo.setText(getString(R.string.strDoRequest));
+        lblTextTermo.setText(getString(R.string.strDoRequest));
+        lblTextTor.setText(getString(R.string.strDoRequest));
      	ImageView imgGraph = (ImageView) findViewById(R.id.imgGraph);
      	imgGraph.setImageBitmap(null);
         new DownloadWebpageText().execute(lblTextTermo, DownloadWebpageSource.Termo);
-        new DownloadWebpageText().execute(lblTextIao, DownloadWebpageSource.Iao);
+        new DownloadWebpageText().execute(lblTextTor, DownloadWebpageSource.Tor);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
     }
     
