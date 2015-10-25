@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lay1x1"
     android:layout_width="72dp"
-    android:layout_height="72dp"
+    android:layout_height="80dp"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:background="@drawable/back"
@@ -13,23 +13,22 @@
         android:text="@string/strWidgetText"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="top|center"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginBottom="12dp"
-        android:textSize="28sp"/>
+        android:textSize="24sp"
+        android:layout_marginTop="-3dp"/>
 
     <TextView
         android:id="@+id/lblWidgetTor"
         android:text="@string/strWidgetTor"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center|bottom"
+        android:layout_gravity="center"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginBottom="0dp"
-        android:textSize="30sp"
-        android:visibility="invisible"/>
+        android:textSize="24sp"
+        />
 
  	<Button
         android:id="@+id/btnWidRefresh"

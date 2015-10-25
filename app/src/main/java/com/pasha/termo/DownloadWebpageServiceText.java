@@ -35,8 +35,8 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
     protected void onPostExecute(
         String currentTemp)
     {
-//        currentTemp = String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
-        SimpleDateFormat sdf = new SimpleDateFormat("HH.mm.ss");
+//        currentTemp = "-23.5";
+        SimpleDateFormat sdf = new SimpleDateFormat("HH.mm");
         String currentTime = sdf.format(Calendar.getInstance().getTime());
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -48,6 +48,7 @@ public class DownloadWebpageServiceText extends AsyncTask<Object, Integer, Strin
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
             remoteViews.setTextViewText(R.id.lblWidgetText, currentTemp);
             remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(currentTemp));
+
             remoteViews.setTextViewText(R.id.lblWidgetTime, currentTime);
 
             // Register an onClickListener
