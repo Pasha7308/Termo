@@ -26,18 +26,12 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
         Log.i(LOG, "onUpdate " + Arrays.toString(appWidgetIds));
         Log.i(LOG, "NAME " + this.getClass().getName());
 
-        final int N = appWidgetIds.length;
-
-        String termo = "UP";
-
-        for (int i = 0; i < N; i++) {
+        for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(),
                 this.getClass().getName().contains("1x1") ? R.layout.widget_1x1 : R.layout.widget_2x1);
-            views.setTextViewText(R.id.lblWidgetText, termo);
-            views.setTextViewText(R.id.lblWidgetTor, termo);
-            views.setTextColor(R.id.lblWidgetText, Color.GRAY);
             views.setTextColor(R.id.lblWidgetTor, Color.GRAY);
-            appWidgetManager.updateAppWidget(appWidgetIds[i], views);
+            views.setTextColor(R.id.lblWidgetText, Color.GRAY);
+            appWidgetManager.updateAppWidget(appWidgetId, views);
         }
 
         ComponentName thisWidget = new ComponentName(context, this.getClass());
