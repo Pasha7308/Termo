@@ -27,7 +27,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activityMain);
-//        mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -55,7 +54,6 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(
         Menu menu)
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
