@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,13 +14,28 @@ import android.widget.TextView;
 
 import com.pasha.termo.R;
 
+import java.util.Random;
+
 public class MainActivity extends Activity {
+
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activityMain);
+//        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.setRefreshing(true);
+                requestSite();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         TextView lblTextTermo = (TextView) findViewById(R.id.lblTextTermo);
         lblTextTermo.setTypeface(lblTextTermo.getTypeface(), Typeface.BOLD);
@@ -43,24 +59,12 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-    
-    public void onRequestButtonPress(
-        View view)
-    {
-    	requestSite();
-    }
-    
+
     public boolean isNetworkEnabled()
     {
         ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        boolean bRet;
-        if (networkInfo != null && networkInfo.isConnected()) {
-        	bRet = true; 
-        } else {
-        	bRet = false;
-        }
-        return bRet;
+        return (networkInfo != null && networkInfo.isConnected());
 	}
 
     public void requestSite()

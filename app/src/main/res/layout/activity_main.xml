@@ -1,69 +1,66 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activityMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/lblCaption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/strCaption" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/lblTextTermo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblCaption"
-        android:layout_centerHorizontal="true"
-        android:text="@string/strText"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/lblCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/strCaption" />
 
-    <TextView
-        android:id="@+id/lblTermo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblCaption"
-        android:layout_centerHorizontal="true"
-        android:text="@string/strTextTemoCaption"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toStartOf="@id/lblTextTermo" />
+        <TextView
+            android:id="@+id/lblTextTermo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblCaption"
+            android:layout_centerHorizontal="true"
+            android:text="@string/strText"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/lblTextIao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblTextTermo"
-        android:layout_centerHorizontal="true"
-        android:text="@string/strText"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/lblTermo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblCaption"
+            android:layout_centerHorizontal="true"
+            android:text="@string/strTextTemoCaption"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_toStartOf="@id/lblTextTermo" />
 
-    <TextView
-        android:id="@+id/lblIao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lblTextTermo"
-        android:layout_centerHorizontal="true"
-        android:text="@string/strTextIaoCaption"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_toStartOf="@id/lblTextIao" />
+        <TextView
+            android:id="@+id/lblTextIao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblTextTermo"
+            android:layout_centerHorizontal="true"
+            android:text="@string/strText"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lblTextIao"
-        android:layout_centerHorizontal="true"
-        android:onClick="onRequestButtonPress"
-        android:text="@string/btnRequest" />
+        <TextView
+            android:id="@+id/lblIao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblTextTermo"
+            android:layout_centerHorizontal="true"
+            android:text="@string/strTextIaoCaption"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_toStartOf="@id/lblTextIao" />
 
-    <ImageView
-        android:id="@+id/imgGraph"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/button1"
-        android:contentDescription="@string/strGraphDescription"
-        android:scaleType="fitStart" />
+        <ImageView
+            android:id="@+id/imgGraph"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/lblIao"
+            android:contentDescription="@string/strGraphDescription"
+            android:scaleType="fitStart" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
