@@ -2,6 +2,7 @@ package com.pasha.termo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -19,6 +20,12 @@ public class MainActivity extends Activity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView lblTextTermo = (TextView) findViewById(R.id.lblTextTermo);
+        lblTextTermo.setTypeface(lblTextTermo.getTypeface(), Typeface.BOLD);
+
+        TextView lblTextIao = (TextView) findViewById(R.id.lblTextIao);
+        lblTextIao.setTypeface(lblTextIao.getTypeface(), Typeface.BOLD);
     }
 
     @Override
@@ -58,15 +65,19 @@ public class MainActivity extends Activity {
 
     public void requestSite()
     {
-     	TextView lblText = (TextView) findViewById(R.id.lblText);
+        TextView lblTextTermo = (TextView) findViewById(R.id.lblTextTermo);
+        TextView lblTextTor = (TextView) findViewById(R.id.lblTextIao);
      	if (!isNetworkEnabled()) {
-         	lblText.setText(getString(R.string.strNoNetwork));
+            lblTextTermo.setText(getString(R.string.strNoNetwork));
+            lblTextTor.setText(getString(R.string.strNoNetwork));
          	return;
      	}
-     	lblText.setText(getString(R.string.strDoRequest));
+        lblTextTermo.setText(getString(R.string.strDoRequest));
+        lblTextTor.setText(getString(R.string.strDoRequest));
      	ImageView imgGraph = (ImageView) findViewById(R.id.imgGraph);
      	imgGraph.setImageBitmap(null);
-    	new DownloadWebpageText().execute(lblText);
+        new DownloadWebpageText().execute(lblTextTermo, DownloadWebpageSource.Termo);
+        new DownloadWebpageText().execute(lblTextTor, DownloadWebpageSource.Tor);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
     }
     

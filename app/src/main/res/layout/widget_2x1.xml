@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lay2x1"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="144dp"
+    android:layout_height="72dp"
     android:background="@drawable/back"
     android:orientation="horizontal"
     android:layout_gravity="center"
@@ -16,10 +16,10 @@
         android:text="@string/strWidgetText"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginEnd="20dp"
+        android:layout_gravity="left|center_vertical|center_horizontal"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="12dp"
         android:textSize="36sp"/>
 
     <TextView
@@ -27,12 +27,11 @@
         android:text="@string/strWidgetTor"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center|bottom"
+        android:layout_gravity="center|right"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginBottom="0dp"
-        android:textSize="40sp"
-        android:visibility="invisible"/>
+        android:layout_marginBottom="12dp"
+        android:textSize="36sp"/>
 
     <Button
         android:id="@+id/btnWidRefresh"
@@ -41,5 +40,17 @@
         android:layout_height="29dp"
         android:layout_gravity="end|bottom"
         android:background="@drawable/perm_group_sync_settings"/>
+
+    <TextView
+        android:id="@+id/lblWidgetTime"
+        android:text="@string/strWidgetTime"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:textColor="@android:color/darker_gray"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="2dp"
+        android:textSize="10sp"/>
 
 </FrameLayout>

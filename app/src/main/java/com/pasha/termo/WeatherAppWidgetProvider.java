@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -27,12 +28,15 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
 
         final int N = appWidgetIds.length;
 
-        String termo = "UPD";
+        String termo = "UP";
 
         for (int i = 0; i < N; i++) {
             RemoteViews views = new RemoteViews(context.getPackageName(),
                 this.getClass().getName().contains("1x1") ? R.layout.widget_1x1 : R.layout.widget_2x1);
             views.setTextViewText(R.id.lblWidgetText, termo);
+            views.setTextViewText(R.id.lblWidgetTor, termo);
+            views.setTextColor(R.id.lblWidgetText, Color.GRAY);
+            views.setTextColor(R.id.lblWidgetTor, Color.GRAY);
             appWidgetManager.updateAppWidget(appWidgetIds[i], views);
         }
 
@@ -41,8 +45,8 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
 
         Intent intent = new Intent(context.getApplicationContext(), this.getClass());
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
-        new DownloadWebpageServiceText().execute(intent, context.getApplicationContext(), this.getClass());
-
+        new DownloadWebpageServiceTermo().execute(intent, context.getApplicationContext(), this.getClass());
+        new DownloadWebpageServiceTor().execute(intent, context.getApplicationContext(), this.getClass());
     }
 
 }

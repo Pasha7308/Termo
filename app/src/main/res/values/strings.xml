@@ -6,9 +6,12 @@
   <string name="widget_name_2x1">Termo (2x1)</string>
   <string name="strCaption">Current temp</string>
   <string name="strGraphDescription">Temp graph</string>
+  <string name="strTextTemoCaption">Termo: </string>
+  <string name="strTextIaoCaption">Iao: </string>
   <string name="strText">Not ready</string>
   <string name="strWidgetText">N/A</string>
   <string name="strWidgetTor">N/T</string>
+  <string name="strWidgetTime">ti\nme</string>
   <string name="menu_settings">Settings</string>
   <string name="btnRequest">ReRequest</string>
   <string name="strUrlGraph">http://termo.tomsk.ru/img.png</string>

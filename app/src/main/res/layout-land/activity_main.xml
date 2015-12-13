@@ -13,21 +13,30 @@
 	        android:layout_height="wrap_content"
 	        android:layout_centerHorizontal="true"
 	        android:text="@string/strCaption" />
-	
-	    <TextView
-	        android:id="@+id/lblText"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/lblCaption"
-	        android:layout_centerHorizontal="true"
-	        android:text="@string/strText"
-	        android:textAppearance="?android:attr/textAppearanceLarge" />
-	
-	    <Button
+
+		<TextView
+			android:id="@+id/lblTextTermo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/lblCaption"
+			android:layout_centerHorizontal="true"
+			android:text="@string/strText"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<TextView
+			android:id="@+id/lblTextIao"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/lblTextTermo"
+			android:layout_centerHorizontal="true"
+			android:text="@string/strText"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<Button
 	        android:id="@+id/button1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@id/lblText"
+	        android:layout_below="@id/lblTextIao"
 	        android:onClick="onRequestButtonPress"
 	        android:text="@string/btnRequest" />
 	</RelativeLayout>
