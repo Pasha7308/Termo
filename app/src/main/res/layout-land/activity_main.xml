@@ -1,58 +1,66 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/activityMain"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
-	<RelativeLayout
-	    android:id="@+id/layLeft"
-	    android:layout_width="wrap_content"
-	    android:layout_height="match_parent">
-
-	    <TextView
-	        android:id="@+id/lblCaption"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:text="@string/strCaption" />
-
-		<TextView
-			android:id="@+id/lblTextTermo"
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent">
+		<RelativeLayout
+			android:id="@+id/layLeft"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@id/lblCaption"
-			android:layout_centerHorizontal="true"
-			android:text="@string/strText"
-			android:textAppearance="?android:attr/textAppearanceLarge" />
+			android:layout_height="match_parent">
 
-		<TextView
-			android:id="@+id/lblTextIao"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@id/lblTextTermo"
-			android:layout_centerHorizontal="true"
-			android:text="@string/strText"
-			android:textAppearance="?android:attr/textAppearanceLarge" />
+			<TextView
+				android:id="@+id/lblCaption"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"
+				android:text="@string/strCaption"
+				android:layout_alignParentLeft="true" />
 
-		<Button
-	        android:id="@+id/button1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/lblTextIao"
-	        android:onClick="onRequestButtonPress"
-	        android:text="@string/btnRequest" />
-	</RelativeLayout>
+			<TextView
+				android:id="@+id/lblTextTermo"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/lblCaption"
+				android:layout_centerHorizontal="true"
+				android:text="@string/strText"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_alignParentLeft="true" />
 
-	<RelativeLayout
-	    android:id="@+id/layRight"
-	    android:layout_width="wrap_content"
-	    android:layout_height="match_parent">
-	    
-	    <ImageView
-	        android:id="@+id/imgGraph"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_alignParentStart="true"
-	        android:layout_alignParentEnd="true"
-	        android:contentDescription="@string/strGraphDescription"
-            android:scaleType="fitStart" />
-	</RelativeLayout>
-</LinearLayout>
+			<TextView
+				android:id="@+id/lblTextIao"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/lblTextTermo"
+				android:layout_centerHorizontal="true"
+				android:text="@string/strText"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_alignParentLeft="true" />
+
+			<Button
+				android:id="@+id/button1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/lblTextIao"
+				android:onClick="onRequestButtonPress"
+				android:text="@string/btnRequest" />
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:id="@+id/layRight"
+			android:layout_height="match_parent"
+            android:layout_width="wrap_content">
+
+			<ImageView
+				android:id="@+id/imgGraph"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_alignParentStart="true"
+				android:layout_alignParentEnd="true"
+				android:contentDescription="@string/strGraphDescription"
+				android:scaleType="fitStart" />
+		</RelativeLayout>
+	</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
