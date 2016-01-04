@@ -12,15 +12,13 @@ public class Colorer {
             temp = Double.parseDouble(tempString);
         } catch (NullPointerException e) {
             temp = 0.0;
-        } catch (NumberFormatException e) {
-            temp = 0.0;
         }
         if (temp < -40) {
-            return Color.rgb(255, 128, 255);
+            return Color.rgb(255, 192, 255);
         } else if (temp < -30) {
-            return Color.rgb(206, 128, 255);
+            return Color.rgb(231, 192, 255);
         } else if (temp < -20) {
-            return Color.rgb(128, 128, 255);
+            return Color.rgb(192, 192, 255);
         } else if (temp < -10) {
             return Color.rgb(128, 191, 255);
         } else if (temp < 0) {
