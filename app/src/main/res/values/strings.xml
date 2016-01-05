@@ -13,11 +13,8 @@
   <string name="strWidgetTor">N/T</string>
   <string name="strWidgetTime">ti\nme</string>
   <string name="menu_settings">Settings</string>
-  <string name="btnRequest">ReRequest</string>
   <string name="strUrlGraph">http://termo.tomsk.ru/img.png</string>
   <string name="strDoRequest">Do Request</string>
   <string name="strNoNetwork">No network</string>
-  <string name="btnWidShow">S</string>
-  <string name="btnWidRefresh">R</string>
-    
+
 </resources>

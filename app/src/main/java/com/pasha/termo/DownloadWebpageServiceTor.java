@@ -9,6 +9,7 @@ import android.widget.RemoteViews;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class DownloadWebpageServiceTor extends AsyncTask<Object, Integer, String>
 {
@@ -45,7 +46,7 @@ public class DownloadWebpageServiceTor extends AsyncTask<Object, Integer, String
 
             boolean is1x1 = callerClass.getName().contains("WeatherAppWidgetProvider1x1");
 
-            SimpleDateFormat sdf = new SimpleDateFormat(is1x1 ? "HH\nmm" : "HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat(is1x1 ? "HH\nmm" : "HH:mm", Locale.getDefault());
             String currentTime = sdf.format(Calendar.getInstance().getTime());
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);

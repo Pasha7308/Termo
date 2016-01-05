@@ -39,13 +39,6 @@
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:layout_alignParentLeft="true" />
 
-			<Button
-				android:id="@+id/button1"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_below="@id/lblTextIao"
-				android:onClick="onRequestButtonPress"
-				android:text="@string/btnRequest" />
 		</RelativeLayout>
 
 		<RelativeLayout
