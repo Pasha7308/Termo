@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.pasha.termo"
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
-        versionName "1.20160104"
+        versionName "1.20160208"
     }
     lintOptions {
         disable 'Overdraw', 'IconDuplicatesConfig', 'IconDipSize'
