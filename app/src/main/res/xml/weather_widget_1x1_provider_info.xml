@@ -4,5 +4,4 @@
     android:minHeight="40dp"
     android:updatePeriodMillis="1800000"
     android:initialLayout="@layout/widget_1x1"
-    android:widgetCategory="keyguard|home_screen"
 />

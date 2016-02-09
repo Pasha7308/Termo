@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:text="@string/strTextTemoCaption"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_toStartOf="@id/lblTextTermo" />
+            android:layout_toLeftOf="@id/lblTextTermo" />
 
         <TextView
             android:id="@+id/lblTextIao"
@@ -50,7 +50,7 @@
             android:layout_centerHorizontal="true"
             android:text="@string/strTextIaoCaption"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_toStartOf="@id/lblTextIao" />
+            android:layout_toLeftOf="@id/lblTextIao" />
 
         <ImageView
             android:id="@+id/imgGraph"
@@ -58,6 +58,8 @@
             android:layout_height="fill_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/lblIao"
             android:contentDescription="@string/strGraphDescription"
             android:scaleType="fitStart" />
