@@ -6,21 +6,25 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Objects;
 
 import android.os.AsyncTask;
 import android.widget.TextView;
 
-public class DownloadWebpageText extends AsyncTask<Object, Integer, String> {
+import com.pasha.termo.model.WeatherDto;
 
-    protected TextView objView;
+public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
 
-    protected String doInBackground(
+    protected TextView objTermo;
+    protected TextView objIao;
+
+    protected WeatherDto doInBackground(
         Object... objs)
     {
-    	objView = (TextView)objs[0];
-        DownloadWebpageSource source = (DownloadWebpageSource)objs[1];
+        objTermo = (TextView)objs[0];
+        objIao = (TextView)objs[1];
         TextDownloader textDownloader = new TextDownloader();
-        return textDownloader.downloadUrl(source);
+        return textDownloader.downloadUrl();
 
     }
 
@@ -30,9 +34,22 @@ public class DownloadWebpageText extends AsyncTask<Object, Integer, String> {
     }
     
     protected void onPostExecute(
-        String result)
+        WeatherDto dto)
     {
-    	objView.setText(result);
+        if (dto != null) {
+            objTermo.setText(termoToString(dto.getServerTermo().getTemp()));
+            objIao.setText(termoToString(dto.getServerIao().getTemp()));
+        }
     }
 
+    private String termoToString(Integer termo) {
+        if (termo == null) {
+            return "";
+        }
+        double dTemp = (double)termo / 10;
+        if (dTemp < -10) {
+            dTemp = Math.round(dTemp);
+        }
+        return String.valueOf(dTemp);
+    }
 }

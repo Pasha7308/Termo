@@ -1,6 +1,15 @@
 package com.pasha.termo;
 
+import android.net.Credentials;
 import android.util.Log;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pasha.termo.model.ServerValueDto;
+import com.pasha.termo.model.WeatherDto;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,33 +21,14 @@ import java.net.URL;
 public class TextDownloader {
 
     private static final String LOG = "TextDownloader";
-    static private final String xmlUrlTermo = "http://termo.tomsk.ru/data.xml";
-    static private final String xmlUrlIao = "http://meteo.iao.ru/weather.php?lang=en";
+    static private final String url = "http://termospring-pasha7308.rhcloud.com/weather";
 
-    static public String getXmlUrlTermo()
-    {
-        return xmlUrlTermo;
-    }
-
-    static public String getXmlUrlIao()
-    {
-        return xmlUrlIao;
-    }
-
-    public String downloadUrl(
-        DownloadWebpageSource source)
+    public WeatherDto downloadUrl()
     {
         Log.i(LOG, "downloadUrl");
 
-        String strUrl = "";
-        switch (source) {
-            case Termo:
-                strUrl = getXmlUrlTermo();
-                break;
-            case Tor:
-                strUrl = getXmlUrlIao();
-        }
-        String strRet = "";
+        String strUrl = url;
+        WeatherDto dto = null;
         try {
             InputStream is = null;
             HttpURLConnection conn = null;
@@ -51,14 +41,7 @@ public class TextDownloader {
                 conn.setConnectTimeout(150060); // milliseconds
                 is = conn.getInputStream();
                 String strIn = readIt(is, len);
-                switch (source) {
-                    case Termo:
-                        strRet = processItTermo(strIn);
-                        break;
-                    case Tor:
-                        strRet = processItIao(strIn);
-                        break;
-                }
+                dto = processIt(strIn);
             } finally {
                 if (conn != null) {
                     conn.disconnect();
@@ -68,9 +51,9 @@ public class TextDownloader {
                 }
             }
         } catch (IOException E) {
-            return "N/A";
+            return dto;
         }
-        return strRet;
+        return dto;
     }
 
     private String readIt(
@@ -84,42 +67,16 @@ public class TextDownloader {
         return new String(buffer);
     }
 
-    public String processItTermo(
-            String strIn)
+    public WeatherDto processIt(
+        String strIn)
     {
-    /*
-     * 	     	<current temp="-21.0" date="28.01.2013" time="21:19" change="-"/>
-     */
-        if (strIn.length() < 500) {
-            return "Wrong answer";
+        WeatherDto dto = null;
+        try {
+            dto = new ObjectMapper().readValue(strIn, WeatherDto.class);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        int iStart = strIn.indexOf("<current temp=\"") + "<current temp=\"".length();
-        int iFinish = strIn.indexOf("\" date=\"");
-        String temp = strIn.substring(iStart, iFinish);
-        double dTemp = Double.parseDouble(temp);
-        if (dTemp < -10) {
-            dTemp = Math.round(dTemp);
-        }
-        return String.valueOf(dTemp);
-    }
-
-    public String processItIao(
-            String strIn)
-    {
-    /*
-     * 	     {"datetime":1440342000,"temp":18,"hum":38,"press":742,"wind_s":2.5,"wind_d":"w","dewp":3.4}
-     */
-        if (!strIn.contains("datetime") || !strIn.contains("temp")) {
-            return "Wrong answer";
-        }
-        int iStart = strIn.indexOf("\"temp\":") + "\"temp\":".length();
-        int iFinish = strIn.indexOf(",\"hum\"");
-        String temp = strIn.substring(iStart, iFinish);
-        double dTemp = Double.parseDouble(temp);
-        if (dTemp < -10) {
-            dTemp = Math.round(dTemp);
-        }
-        return String.valueOf(dTemp);
+        return dto;
     }
 
 }

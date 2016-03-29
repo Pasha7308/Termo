@@ -7,25 +7,27 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.RemoteViews;
 
+import com.pasha.termo.model.WeatherDto;
+import com.pasha.termo.utils.DateUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class DownloadWebpageServiceTor extends AsyncTask<Object, Integer, String>
+public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDto>
 {
-
     protected Intent intent;
     protected Context context;
     protected Class callerClass;
 
-    protected String doInBackground(
-            Object... objs)
+    protected WeatherDto doInBackground(
+        Object... objs)
     {
         intent = (Intent)objs[0];
         context = (Context)objs[1];
         callerClass = (Class)objs[2];
         TextDownloader textDownloader = new TextDownloader();
-        return textDownloader.downloadUrl(DownloadWebpageSource.Tor);
+        return textDownloader.downloadUrl();
     }
 
     protected void onProgressUpdate(
@@ -34,10 +36,14 @@ public class DownloadWebpageServiceTor extends AsyncTask<Object, Integer, String
     }
 
     protected void onPostExecute(
-            String currentTemp)
+        WeatherDto dto)
     {
 //        currentTemp = "-24.5";
-        currentTemp = TempRounder.Round(currentTemp);
+        if (dto == null) {
+            return;
+        }
+        String tempTermo = TempRounder.Round(dto.getServerTermo().getTemp());
+        String tempIao = TempRounder.Round(dto.getServerIao().getTemp());
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] allWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
@@ -46,15 +52,17 @@ public class DownloadWebpageServiceTor extends AsyncTask<Object, Integer, String
 
             boolean is1x1 = callerClass.getName().contains("WeatherAppWidgetProvider1x1");
 
-            SimpleDateFormat sdf = new SimpleDateFormat(is1x1 ? "HH\nmm" : "HH:mm", Locale.getDefault());
-            String currentTime = sdf.format(Calendar.getInstance().getTime());
-
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
 
-            remoteViews.setTextViewText(R.id.lblWidgetTor, currentTemp);
-            remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(currentTemp));
+            remoteViews.setTextViewText(R.id.lblWidgetText, tempTermo);
+            remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(tempTermo));
 
-            remoteViews.setTextViewText(R.id.lblWidgetTime, currentTime);
+            remoteViews.setTextViewText(R.id.lblWidgetTor, tempIao);
+            remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(tempIao));
+
+            if (dto.getUpdated().GetDateTime() != null) {
+                remoteViews.setTextViewText(R.id.lblWidgetTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), is1x1));
+            }
 
             // Register an onClickListener
             Intent clickIntent = new Intent(context, callerClass);

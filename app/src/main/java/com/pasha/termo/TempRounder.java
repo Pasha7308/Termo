@@ -3,9 +3,9 @@ package com.pasha.termo;
 public class TempRounder {
 
     static String Round(
-        String currentTemp)
+        Integer termo)
     {
-        double tempDouble = Double.parseDouble(currentTemp);
+        double tempDouble = (double)termo / 10;
         if (Math.abs(tempDouble) < 10) {
             return String.valueOf(tempDouble);
         } else {

@@ -78,8 +78,7 @@ public class MainActivity extends Activity {
         lblTextTor.setText(getString(R.string.strDoRequest));
      	ImageView imgGraph = (ImageView) findViewById(R.id.imgGraph);
      	imgGraph.setImageBitmap(null);
-        new DownloadWebpageText().execute(lblTextTermo, DownloadWebpageSource.Termo);
-        new DownloadWebpageText().execute(lblTextTor, DownloadWebpageSource.Tor);
+        new DownloadWebpageText().execute(lblTextTermo, lblTextTor);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
     }
     

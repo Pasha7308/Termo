@@ -39,8 +39,7 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
 
         Intent intent = new Intent(context.getApplicationContext(), this.getClass());
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
-        new DownloadWebpageServiceTermo().execute(intent, context.getApplicationContext(), this.getClass());
-        new DownloadWebpageServiceTor().execute(intent, context.getApplicationContext(), this.getClass());
+        new DownloadWebpageService().execute(intent, context.getApplicationContext(), this.getClass());
     }
 
 }
