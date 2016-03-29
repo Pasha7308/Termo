@@ -1,8 +1,8 @@
-package com.pasha.termo;
+package com.pasha.termo.utils;
 
 public class TempRounder {
 
-    static String Round(
+    static public String round(
         Integer termo)
     {
         double tempDouble = (double)termo / 10;

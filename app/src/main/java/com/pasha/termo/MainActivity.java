@@ -2,6 +2,9 @@ package com.pasha.termo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -36,11 +39,9 @@ public class MainActivity extends Activity {
             }
         });
 
-        TextView lblTextTermo = (TextView) findViewById(R.id.lblTextTermo);
-        lblTextTermo.setTypeface(lblTextTermo.getTypeface(), Typeface.BOLD);
+        setTypeFace((TextView) findViewById(R.id.lblTextTermo));
+        setTypeFace((TextView) findViewById(R.id.lblTextIao));
 
-        TextView lblTextIao = (TextView) findViewById(R.id.lblTextIao);
-        lblTextIao.setTypeface(lblTextIao.getTypeface(), Typeface.BOLD);
     }
 
     @Override
@@ -77,9 +78,14 @@ public class MainActivity extends Activity {
         lblTextTermo.setText(getString(R.string.strDoRequest));
         lblTextTor.setText(getString(R.string.strDoRequest));
      	ImageView imgGraph = (ImageView) findViewById(R.id.imgGraph);
+        DrawView drawView = (DrawView) findViewById(R.id.drawView);
      	imgGraph.setImageBitmap(null);
-        new DownloadWebpageText().execute(lblTextTermo, lblTextTor);
+        new DownloadWebpageText().execute(lblTextTermo, lblTextTor, drawView);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
     }
-    
+
+    private void setTypeFace(TextView textView) {
+        textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+    }
+
 }

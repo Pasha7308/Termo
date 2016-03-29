@@ -1,10 +1,10 @@
-package com.pasha.termo;
+package com.pasha.termo.utils;
 
 import android.graphics.Color;
 
 public class Colorer {
 
-    static int getColorOutOfTemp(
+    static public int getColorOutOfTemp(
         String tempString)
     {
         Double temp;

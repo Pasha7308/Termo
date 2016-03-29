@@ -39,6 +39,16 @@
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:layout_alignParentLeft="true" />
 
+			<com.pasha.termo.DrawView
+				android:id="@+id/drawView"
+				android:name="com.pasha.termo.DrawView"
+				android:layout_width="100dp"
+				android:layout_height="match_parent"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/lblTextIao" />
+
 		</RelativeLayout>
 
 		<RelativeLayout

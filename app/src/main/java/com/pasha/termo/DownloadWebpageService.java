@@ -8,11 +8,9 @@ import android.os.AsyncTask;
 import android.widget.RemoteViews;
 
 import com.pasha.termo.model.WeatherDto;
+import com.pasha.termo.utils.Colorer;
 import com.pasha.termo.utils.DateUtils;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import com.pasha.termo.utils.TempRounder;
 
 public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDto>
 {
@@ -42,8 +40,8 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         if (dto == null) {
             return;
         }
-        String tempTermo = TempRounder.Round(dto.getServerTermo().getTemp());
-        String tempIao = TempRounder.Round(dto.getServerIao().getTemp());
+        String tempTermo = TempRounder.round(dto.getServerTermo().getTemp());
+        String tempIao = TempRounder.round(dto.getServerIao().getTemp());
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] allWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);

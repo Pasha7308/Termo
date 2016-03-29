@@ -52,6 +52,18 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_toLeftOf="@id/lblTextIao" />
 
+        <com.pasha.termo.DrawView
+            android:id="@+id/drawView"
+            android:name="com.pasha.termo.DrawView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/imgGraph"
+            android:layout_toRightOf="@+id/lblTextTermo"
+            android:layout_toEndOf="@+id/lblTextTermo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <ImageView
             android:id="@+id/imgGraph"
             android:layout_width="wrap_content"
