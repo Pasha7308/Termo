@@ -11,8 +11,9 @@
             android:id="@+id/lblCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/strCaption" />
+            android:text="@string/strCaption"
+            android:layout_toLeftOf="@+id/drawView"
+            android:layout_toStartOf="@+id/drawView" />
 
         <TextView
             android:id="@+id/lblTextTermo"
