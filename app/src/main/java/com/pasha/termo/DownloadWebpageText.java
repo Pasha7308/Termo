@@ -42,6 +42,7 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
             objTermo.setText(termoToString(dto.getServerTermo().getTemp()));
             objIao.setText(termoToString(dto.getServerIao().getTemp()));
             drawView.setTemps(dto.getOldValues());
+            drawView.invalidate();
         }
     }
 
