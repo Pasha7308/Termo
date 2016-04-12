@@ -95,6 +95,8 @@ public class DrawView extends View {
     }
 
     private void getMinMax(Canvas canvas) {
+        min = 9999;
+        max = -9999;
         for (int i = 0; i < temps.size(); i++) {
             Integer cur = temps.get(i);
             if (cur == null) {
