@@ -14,7 +14,8 @@
     <ImageView
         android:id="@+id/imgvWidget"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_gravity="center_vertical|bottom|center_horizontal"
+        android:layout_height="30dp"/>
     <TextView
         android:id="@+id/lblWidgetText"
         android:text="@string/strWidgetText"
