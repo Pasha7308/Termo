@@ -47,7 +47,7 @@ public class DrawView {
     }
 
     public void draw(Canvas canvas, ArrayList<Integer> temps) {
-        this.temps = temps;
+        fillTemps(temps);
         if (temps == null || temps.size() == 0) {
             return;
         }
@@ -144,5 +144,18 @@ public class DrawView {
     private void copyPoint() {
         pntLast.x = pnt.x;
         pntLast.y = pnt.y;
+    }
+
+    private void fillTemps(ArrayList<Integer> tempsIn) {
+        temps = tempsIn;
+        Log.i(LOG, "size: " + temps.size());
+        if (isWidget) {
+            // remove all values except last hour
+            int size = temps.size();
+            for (int i = 0; i < (size - 12); i++) {
+                temps.remove(0);
+            }
+        }
+        Log.i(LOG, "size: " + temps.size());
     }
 }
