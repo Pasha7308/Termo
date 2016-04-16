@@ -38,7 +38,7 @@ public class DrawView {
         paint.setColor(isWidget ? Color.WHITE : Color.BLACK);
         paint.setAntiAlias(true);
         paint.setDither(true);
-        paint.setStrokeWidth(isWidget ? 5 : 2);
+        paint.setStrokeWidth(2);
 
         paintGrid = new Paint();
         paintGrid.setColor(isWidget ? Color.LTGRAY : Color.GRAY);
@@ -52,8 +52,10 @@ public class DrawView {
             return;
         }
         getMinMax(canvas);
+        int widgetLineSize = height / 15;
+        int radius = ((height > width) ? width : height) / 50;
         if (isWidget) {
-            paint.setStrokeWidth(height / 20);
+            paint.setStrokeWidth(widgetLineSize);
         }
         if (!isWidget) {
             drawGrid(canvas);
@@ -67,10 +69,7 @@ public class DrawView {
             }
             pnt.x = 20 + i * widthSingle;
             pnt.y = getCur(cur);
-            int radius = ((height > width) ? width : height) / (isWidget ? 30 : 100);
-            if (!isWidget) {
-                canvas.drawCircle(pnt.x, pnt.y, radius, paint);
-            }
+            canvas.drawCircle(pnt.x, pnt.y, isWidget ? widgetLineSize / 2 : radius, paint);
             if (i == 0) {
                 copyPoint();
                 continue;
@@ -81,12 +80,12 @@ public class DrawView {
     }
 
     private void drawGrid(Canvas canvas) {
-        int heightSingle = (height - 4) / totalDegrees;
+        int heightSingle = height / totalDegrees;
         for (int i = 0; i < totalDegrees + 1; i++) {
             int y = 2 + ((i * heightSingle));
             canvas.drawLine(2, y, width - 4, y, paintGrid);
             int cur = max / 10 - i;
-            canvas.drawText(String.valueOf(cur), 0, y + ((i == 0) ? -4 + textHeight : -6), paintGrid);
+            canvas.drawText(String.valueOf(cur), 0, y + ((i == 0) ? textHeight : -2), paintGrid);
         }
         Log.i(LOG, "Width: " + width + ", Height: " + height + ", min:" + min  + ", max:" + max );
     }
@@ -99,6 +98,7 @@ public class DrawView {
     private void getMinMax(Canvas canvas) {
         int minReal = 9999;
         int maxReal = -9999;
+        int last = 9999;
         for (int i = 0; i < temps.size(); i++) {
             Integer cur = temps.get(i);
             if (cur == null) {
@@ -110,6 +110,7 @@ public class DrawView {
             if (minReal == 9999 || minReal > cur) {
                 minReal = cur;
             }
+            last = cur;
         }
         width = canvas.getWidth();
         height = canvas.getHeight() - 4;
@@ -124,8 +125,18 @@ public class DrawView {
             int middleTotal = (totalDegrees * 10) / 2 + 1;
             min = middle - middleTotal;
             max = min + (totalDegrees * 10);
+            if (last != 9999) {
+                if (last < min) {
+                    min = last;
+                    max = min + (totalDegrees * 10);
+                }
+                if (last > max) {
+                    max = last;
+                    min = max - (totalDegrees * 10);
+                }
+            }
         }
-        textHeight = height / 15;
+        textHeight = height / 12;
         paint.setTextSize(textHeight);
         paintGrid.setTextSize(textHeight);
     }

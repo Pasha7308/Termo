@@ -9,22 +9,21 @@
 
         <ImageView
             android:id="@+id/imgGraphCollected"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/lblCaption"
-            android:layout_toEndOf="@+id/lblCaption"
-            android:layout_alignBottom="@+id/lblTextIao" />
+            android:layout_alignBottom="@+id/lblTextIao"
+            android:padding="2dp" />
         <TextView
             android:id="@+id/lblCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/strCaption"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/lblTextTermo"
-            android:layout_alignEnd="@+id/lblTextTermo" />
+            android:layout_toLeftOf="@+id/imgGraphCollected"
+            android:layout_toStartOf="@+id/imgGraphCollected"
+            android:layout_alignParentTop="true"/>
 
         <TextView
             android:id="@+id/lblTextTermo"
@@ -33,6 +32,8 @@
             android:layout_below="@+id/lblCaption"
             android:layout_centerHorizontal="true"
             android:text="@string/strText"
+            android:layout_alignRight="@+id/lblCaption"
+            android:layout_alignEnd="@+id/lblCaption"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -52,6 +53,8 @@
             android:layout_below="@+id/lblTextTermo"
             android:layout_centerHorizontal="true"
             android:text="@string/strText"
+            android:layout_alignRight="@+id/lblCaption"
+            android:layout_alignEnd="@+id/lblCaption"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView

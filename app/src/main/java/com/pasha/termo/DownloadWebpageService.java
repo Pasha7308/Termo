@@ -51,15 +51,15 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         if (dto == null) {
             return;
         }
-        String tempTermo = TempRounder.round(dto.getServerTermo().getTemp());
-        String tempIao = TempRounder.round(dto.getServerIao().getTemp());
-
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] allWidgetIds = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
 
         for (int widgetId : allWidgetIds) {
 
             boolean is1x1 = callerClass.getName().contains("WeatherAppWidgetProvider1x1");
+
+            String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), is1x1, false);
+            String tempIao = TempRounder.round(dto.getServerIao().getTemp(), is1x1, true);
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
 
