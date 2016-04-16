@@ -6,59 +6,55 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class DrawView extends View {
+public class DrawView {
+    private static final String LOG = "DrawView";
+
     private final static int totalDegrees = 5;
-    private final static int textHeight = 20;
 
-    Paint paintGrid = new Paint();
-    Paint paint = new Paint();
+    private boolean isWidget;
+    private Paint paintGrid;
+    private Paint paint;
 
-    Point pnt = new Point();
-    Point pntLast = new Point();
+    private Point pnt = new Point();
+    private Point pntLast = new Point();
 
-    ArrayList<Integer> temps = null;
-    int min = 9999, max = -9999;
-    double middle = 0.0;
-    int heightSingle = 100;
-    int width = 0, height = 0;
+    private ArrayList<Integer> temps = null;
+    private int min;
+    private int max;
+    private int width;
+    private int height;
+    private int textHeight;
 
-    public void setTemps(ArrayList<Integer> temps) {
-        this.temps = temps;
-    }
+    public DrawView(boolean isWidget) {
+        this.isWidget = isWidget;
 
-    public DrawView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        paint.setColor(Color.BLACK);
-        paint.setAntiAlias(false);
-        paint.setDither(false);
+        paint = new Paint();
+        paint.setColor(isWidget ? Color.WHITE : Color.BLACK);
+        paint.setAntiAlias(true);
+        paint.setDither(true);
         paint.setStrokeWidth(2);
-        paint.setTextSize(30);
 
-        paintGrid.setColor(Color.GRAY);
-        paintGrid.setAntiAlias(false);
-        paintGrid.setDither(false);
-        temps = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
-            temps.add(i);
-        }
+        paintGrid = new Paint();
+        paintGrid.setColor(isWidget ? Color.LTGRAY : Color.GRAY);
+        paintGrid.setAntiAlias(true);
+        paintGrid.setDither(true);
     }
 
-    @Override
-    public void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
+    public void draw(Canvas canvas, ArrayList<Integer> temps) {
+        this.temps = temps;
         if (temps == null || temps.size() == 0) {
             return;
         }
         getMinMax(canvas);
-        int widthSingle = (width - 20) / (temps.size() - 1);
         drawGrid(canvas);
 
+        int widthSingle = (width - 20) / (temps.size() - 1);
         for (int i = 0; i < temps.size(); i++) {
             Integer cur = temps.get(i);
             if (cur == null) {
@@ -78,16 +74,13 @@ public class DrawView extends View {
 
     private void drawGrid(Canvas canvas) {
         int heightSingle = (height - 4) / totalDegrees;
-        int middle = ((max + min) / 2);
-        int middleTotal = totalDegrees / 2;
-        min = middle / 10 - middleTotal;
-        max = min + totalDegrees;
         for (int i = 0; i < totalDegrees + 1; i++) {
             int y = 2 + ((i * heightSingle));
             canvas.drawLine(2, y, width - 4, y, paintGrid);
             int cur = max - i;
-            canvas.drawText(String.valueOf(cur), 2, y + ((i == 0) ? 2 + textHeight : -2), paint);
+            canvas.drawText(String.valueOf(cur), 0, y + ((i == 0) ? -4 + textHeight : -6), paintGrid);
         }
+        Log.i(LOG, "Width: " + width + ", Height: " + height + ", min:" + min  + ", max:" + max );
     }
 
     private int getCur(int cur) {
@@ -95,24 +88,30 @@ public class DrawView extends View {
     }
 
     private void getMinMax(Canvas canvas) {
-        min = 9999;
-        max = -9999;
+        int minReal = 9999;
+        int maxReal = -9999;
         for (int i = 0; i < temps.size(); i++) {
             Integer cur = temps.get(i);
             if (cur == null) {
                 continue;
             }
-            if (max == -9999 || max < cur) {
-                max = cur;
+            if (maxReal == -9999 || maxReal < cur) {
+                maxReal = cur;
             }
-            if (min == 9999 || min > cur) {
-                min = cur;
+            if (minReal == 9999 || minReal > cur) {
+                minReal = cur;
             }
         }
-        middle = (double)(max + min) / 2.0;
-        heightSingle = canvas.getHeight() / (totalDegrees * 10);
         width = canvas.getWidth();
         height = canvas.getHeight() - 4;
+
+        int middle = ((maxReal + minReal) / 2);
+        int middleTotal = totalDegrees / 2 + 1;
+        min = middle / 10 - middleTotal;
+        max = min + totalDegrees;
+        textHeight = height / 15;
+        paint.setTextSize(textHeight);
+        paintGrid.setTextSize(textHeight);
     }
 
     private void copyPoint() {

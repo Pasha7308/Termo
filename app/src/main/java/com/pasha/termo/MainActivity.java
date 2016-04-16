@@ -78,9 +78,9 @@ public class MainActivity extends Activity {
         lblTextTermo.setText(getString(R.string.strDoRequest));
         lblTextTor.setText(getString(R.string.strDoRequest));
      	ImageView imgGraph = (ImageView) findViewById(R.id.imgGraph);
-        DrawView drawView = (DrawView) findViewById(R.id.drawView);
-     	imgGraph.setImageBitmap(null);
-        new DownloadWebpageText().execute(lblTextTermo, lblTextTor, drawView);
+//        DrawView drawView = (DrawView) findViewById(R.id.drawView);
+//     	imgGraph.setImageBitmap(null);
+        new DownloadWebpageText().execute(lblTextTermo, lblTextTor, null);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
     }
 

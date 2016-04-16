@@ -2,9 +2,17 @@ package com.pasha.termo;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
+import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.pasha.termo.model.WeatherDto;
@@ -14,9 +22,12 @@ import com.pasha.termo.utils.TempRounder;
 
 public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDto>
 {
+    private static final String LOG = "DownloadWebpageService";
     protected Intent intent;
     protected Context context;
     protected Class callerClass;
+    protected int wPx = 0;
+    protected int hPx = 0;
 
     protected WeatherDto doInBackground(
         Object... objs)
@@ -60,7 +71,21 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
             if (dto.getUpdated().GetDateTime() != null) {
                 remoteViews.setTextViewText(R.id.lblWidgetTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), is1x1));
+                remoteViews.setTextColor(R.id.lblWidgetTime, Color.WHITE);
             }
+
+            getSizes(widgetId);
+            Log.i(LOG, "W: " + wPx + ", H: " + hPx);
+            Bitmap bm;
+            if (wPx != 0 && hPx != 0) {
+                bm = Bitmap.createBitmap(wPx, hPx, Bitmap.Config.ARGB_8888);
+            } else {
+                bm = Bitmap.createBitmap(is1x1 ? 192 : 192 * 2, 192, Bitmap.Config.ARGB_8888);
+            }
+            Canvas canvas = new Canvas(bm);
+            DrawView drawView = new DrawView(true);
+            drawView.draw(canvas, dto.getOldValues());
+            remoteViews.setBitmap(R.id.imgvWidget, "setImageBitmap", bm);
 
             // Register an onClickListener
             Intent clickIntent = new Intent(context, callerClass);
@@ -79,4 +104,19 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         }
     }
 
-}
+    private void getSizes(int appWidgetId)
+    {
+        AppWidgetProviderInfo providerInfo = AppWidgetManager.getInstance(context).getAppWidgetInfo(appWidgetId);
+
+        int w_dp = providerInfo.minWidth;
+        int h_dp = providerInfo.minHeight;
+
+        wPx = dpToPx(w_dp, context);
+        hPx = dpToPx(h_dp, context);
+    }
+
+    public static int dpToPx(int dp, Context context)
+    {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(dp * displayMetrics.density);
+    }}

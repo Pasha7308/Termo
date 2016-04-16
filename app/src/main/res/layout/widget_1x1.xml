@@ -8,6 +8,10 @@
     android:background="@drawable/back"
     android:layout_margin="@dimen/widget_margin">
 
+    <ImageView
+        android:id="@+id/imgvWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <TextView
         android:id="@+id/lblWidgetText"
         android:text="@string/strWidgetText"
@@ -17,6 +21,8 @@
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="28sp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="-4dp"/>
 
     <TextView
@@ -49,8 +55,8 @@
         android:textColor="@android:color/darker_gray"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginBottom="0dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
         android:textSize="10sp"/>
 
 </FrameLayout>

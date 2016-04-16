@@ -9,7 +9,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
-        versionName "1.20160411"
+        versionName "1.20160416"
     }
     lintOptions {
         disable 'Overdraw', 'IconDuplicatesConfig', 'IconDipSize'

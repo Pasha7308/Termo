@@ -17,14 +17,14 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
 
     protected TextView objTermo;
     protected TextView objIao;
-    protected DrawView drawView;
+//    protected DrawView drawView;
 
     protected WeatherDto doInBackground(
         Object... objs)
     {
         objTermo = (TextView)objs[0];
         objIao = (TextView)objs[1];
-        drawView = (DrawView)objs[2];
+//        drawView = (DrawView)objs[2];
         TextDownloader textDownloader = new TextDownloader();
         return textDownloader.downloadUrl();
 
@@ -41,8 +41,8 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
         if (dto != null) {
             objTermo.setText(termoToString(dto.getServerTermo().getTemp()));
             objIao.setText(termoToString(dto.getServerIao().getTemp()));
-            drawView.setTemps(dto.getOldValues());
-            drawView.invalidate();
+//            drawView.setTemps(dto.getOldValues());
+//            drawView.invalidate();
         }
     }
 
