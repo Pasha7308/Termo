@@ -8,7 +8,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Objects;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.AsyncTask;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pasha.termo.model.WeatherDto;
@@ -17,14 +20,15 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
 
     protected TextView objTermo;
     protected TextView objIao;
-//    protected DrawView drawView;
+    protected ImageView imgGraphCollected;
 
     protected WeatherDto doInBackground(
         Object... objs)
     {
         objTermo = (TextView)objs[0];
         objIao = (TextView)objs[1];
-//        drawView = (DrawView)objs[2];
+        imgGraphCollected = (ImageView)objs[2];
+
         TextDownloader textDownloader = new TextDownloader();
         return textDownloader.downloadUrl();
 
@@ -41,8 +45,13 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
         if (dto != null) {
             objTermo.setText(termoToString(dto.getServerTermo().getTemp()));
             objIao.setText(termoToString(dto.getServerIao().getTemp()));
-//            drawView.setTemps(dto.getOldValues());
-//            drawView.invalidate();
+
+            Bitmap bm = Bitmap.createBitmap(192 * 2, 192, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bm);
+            imgGraphCollected.setImageBitmap(bm);
+
+            DrawView drawView = new DrawView(false);
+            drawView.draw(canvas, dto.getOldValues());
         }
     }
 

@@ -2,6 +2,7 @@ package com.pasha.termo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -78,9 +79,9 @@ public class MainActivity extends Activity {
         lblTextTermo.setText(getString(R.string.strDoRequest));
         lblTextTor.setText(getString(R.string.strDoRequest));
      	ImageView imgGraph = (ImageView) findViewById(R.id.imgGraph);
-//        DrawView drawView = (DrawView) findViewById(R.id.drawView);
-//     	imgGraph.setImageBitmap(null);
-        new DownloadWebpageText().execute(lblTextTermo, lblTextTor, null);
+        ImageView imgGraphCollected = (ImageView) findViewById(R.id.imgGraphCollected);
+     	imgGraph.setImageBitmap(null);
+        new DownloadWebpageText().execute(lblTextTermo, lblTextTor, imgGraphCollected);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
     }
 

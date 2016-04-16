@@ -11,6 +11,13 @@
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent">
 
+			<ImageView
+				android:id="@+id/imgGraphCollected"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:layout_below="@+id/lblTextIao"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true" />
 			<TextView
 				android:id="@+id/lblCaption"
 				android:layout_width="wrap_content"
@@ -50,12 +57,12 @@
 				android:id="@+id/imgGraph"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_alignParentStart="true"
 				android:layout_alignParentEnd="true"
-				android:layout_alignParentLeft="true"
 				android:layout_alignParentRight="true"
 				android:contentDescription="@string/strGraphDescription"
-				android:scaleType="fitStart" />
+				android:scaleType="fitStart"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true" />
 		</RelativeLayout>
 	</LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
