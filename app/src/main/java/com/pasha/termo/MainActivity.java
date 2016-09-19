@@ -42,7 +42,6 @@ public class MainActivity extends Activity {
 
         setTypeFace((TextView) findViewById(R.id.lblTextTermo));
         setTypeFace((TextView) findViewById(R.id.lblTextIao));
-
     }
 
     @Override
