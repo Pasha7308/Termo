@@ -15,6 +15,7 @@
         android:id="@+id/imgvWidget"
         android:layout_width="match_parent"
         android:layout_gravity="center_vertical|bottom|center_horizontal"
+        android:contentDescription="@string/strGraphDescription"
         android:layout_height="30dp"/>
     <TextView
         android:id="@+id/lblWidgetText"
