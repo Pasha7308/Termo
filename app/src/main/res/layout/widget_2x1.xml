@@ -3,7 +3,7 @@
     android:id="@+id/lay2x1"
     android:layout_width="144dp"
     android:layout_height="72dp"
-    android:background="@drawable/back"
+    android:background="@drawable/back2"
     android:orientation="horizontal"
     android:layout_gravity="center"
     android:layout_marginTop="@dimen/widget_margin_top"
