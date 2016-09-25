@@ -16,7 +16,6 @@
   <string name="strUrlGraph">http://termo.tomsk.ru/img.png</string>
   <string name="strDoRequest">Do Request</string>
   <string name="strNoNetwork">No network</string>
-  <string name="strNotificationTemplate" formatted="false">Termo: %s, IAO: %s</string>
   <string name="strNotificationTemplateTermo" formatted="false">Termo: %s</string>
   <string name="strNotificationTemplateIao" formatted="false">IAO: %s</string>
 </resources>

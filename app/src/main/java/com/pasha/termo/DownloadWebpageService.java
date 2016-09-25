@@ -132,10 +132,8 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
     private void addNotification(WeatherDto dto) {
         Resources res = context.getResources();
-        String caption = res.getString(R.string.strCaption);
         String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), false, false);
         String tempIao = TempRounder.round(dto.getServerIao().getTemp(), false, true);
-        String text = String.format(res.getString(R.string.strNotificationTemplate), tempTermo, tempIao);
         String textTermo = String.format(res.getString(R.string.strNotificationTemplateTermo), tempTermo);
         String textIao = String.format(res.getString(R.string.strNotificationTemplateIao), tempIao);
         Bitmap bm = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
@@ -143,16 +141,18 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle(caption)
-                        .setContentText(text)
+                        .setSmallIcon(R.drawable.ic_stat_notification)
+                        .setContentTitle(textTermo)
+                        .setContentText(textIao)
                         .setLargeIcon(bm)
                         .setAutoCancel(false);
+/* more complex notification. Not necessary because there is no additional information
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.setBigContentTitle(caption);
         mBuilder.setStyle(inboxStyle);
         inboxStyle.addLine(textTermo);
         inboxStyle.addLine(textIao);
+*/
 
         mBuilder.setVisibility(VISIBILITY_PUBLIC);
 
