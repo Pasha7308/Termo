@@ -6,10 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
 import android.widget.RemoteViews;
-
-import java.util.Arrays;
 
 public class WeatherAppWidgetProvider extends AppWidgetProvider {
 
@@ -23,8 +20,8 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
     {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
 
-        Log.i(LOG, "onUpdate " + Arrays.toString(appWidgetIds));
-        Log.i(LOG, "NAME " + this.getClass().getName());
+//        Log.i(LOG, "onUpdate " + Arrays.toString(appWidgetIds);
+//        Log.i(LOG, "NAME " + this.getClass().getName());
 
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(),
