@@ -79,5 +79,13 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/imgGraphCollected" />
 
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/lblTermo"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView"/>
+
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

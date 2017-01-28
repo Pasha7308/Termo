@@ -35,4 +35,18 @@ public class Colorer {
             return Color.rgb(204, 0, 0);
         }
     }
+    static public int getBackgoundColorFromTheme(
+            int theme) {
+        int color = 0;
+        switch (theme) {
+            case 1: // light
+                color = Color.argb(128, 128, 128, 128);
+                break;
+            case 0: // dark
+            default:
+                color = Color.argb(255, 56, 66, 72);
+                break;
+        }
+        return color;
+    }
 }

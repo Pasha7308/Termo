@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
+import com.pasha.termo.activities.MainActivity;
 import com.pasha.termo.model.WeatherDto;
 import com.pasha.termo.utils.Colorer;
 import com.pasha.termo.utils.DateUtils;
@@ -42,6 +43,7 @@ class NotificationCreator {
         Bitmap bm = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
         DrawManager.drawOnBitmap(bm, dto, true);
         remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
+        WeatherAppWidgetProvider.setWidgetColors(R.layout.notification, context, remoteViews, false);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)

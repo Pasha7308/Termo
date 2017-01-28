@@ -1,26 +1,27 @@
-package com.pasha.termo;
+package com.pasha.termo.activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Menu;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pasha.termo.DownloadWebpageGraph;
+import com.pasha.termo.DownloadWebpageText;
 import com.pasha.termo.R;
 
-import java.util.Random;
-
 public class MainActivity extends Activity {
+
+    private static final int SETTINGS_RESULT = 1;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -42,6 +43,7 @@ public class MainActivity extends Activity {
 
         setTypeFace((TextView) findViewById(R.id.lblTextTermo));
         setTypeFace((TextView) findViewById(R.id.lblTextIao));
+
     }
 
     @Override
@@ -82,10 +84,31 @@ public class MainActivity extends Activity {
      	imgGraph.setImageBitmap(null);
         new DownloadWebpageText().execute(lblTextTermo, lblTextTor, imgGraphCollected);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String theme = sharedPref.getString(SettingsActivity.KEY_PREF_THEME, "");
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(theme);
     }
 
     private void setTypeFace(TextView textView) {
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivityForResult(i, SETTINGS_RESULT);
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 }

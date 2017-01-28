@@ -12,6 +12,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import com.pasha.termo.activities.MainActivity;
 import com.pasha.termo.model.WeatherDto;
 import com.pasha.termo.utils.Colorer;
 import com.pasha.termo.utils.DateUtils;
