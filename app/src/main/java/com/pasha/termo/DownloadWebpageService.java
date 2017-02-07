@@ -5,14 +5,17 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.pasha.termo.activities.MainActivity;
+import com.pasha.termo.activities.SettingsActivity;
 import com.pasha.termo.model.WeatherDto;
 import com.pasha.termo.utils.Colorer;
 import com.pasha.termo.utils.DateUtils;
@@ -100,7 +103,9 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
-        notificationCreator.addNotification(dto);
+        if (isAddNotofication()) {
+            notificationCreator.addNotification(dto);
+        }
     }
 
     private void getSizes(int appWidgetId)
@@ -118,5 +123,12 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
     {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(dp * displayMetrics.density);
+    }
+
+    private boolean isAddNotofication() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        String add = sharedPref.getString(SettingsActivity.KEY_PREF_IS_NOTIFICATION, "1");
+        int addInt = Integer.parseInt(add);
+        return addInt == 1;
     }
 }

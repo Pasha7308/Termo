@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:key="pref_theme"
-        android:title="@string/pref_themeTitle"
-        android:dialogTitle="@string/pref_themeTitleDialog"
+        android:key="pref_theme_widget"
+        android:title="@string/pref_themeWidgetTitle"
+        android:dialogTitle="@string/pref_themeWidgetTitleDialog"
         android:entries="@array/pref_themeEntries"
         android:entryValues="@array/pref_themeValues"
-        android:defaultValue="@string/pref_themeValuesDefault" />
+        android:defaultValue="@string/pref_themeWidgetValuesDefault" />
+    <ListPreference
+        android:key="pref_theme_notification"
+        android:title="@string/pref_themeNotificationTitle"
+        android:dialogTitle="@string/pref_themeNotificationTitleDialog"
+        android:entries="@array/pref_themeEntries"
+        android:entryValues="@array/pref_themeValues"
+        android:defaultValue="@string/pref_themeNotificationValuesDefault" />
+    <ListPreference
+        android:key="pref_is_notification"
+        android:title="@string/pref_isNotificationTitle"
+        android:dialogTitle="@string/pref_isNotificationTitleDialog"
+        android:entries="@array/pref_isNotificationEntries"
+        android:entryValues="@array/pref_isNotificationValues"
+        android:defaultValue="@string/pref_isNotificationValuesDefault" />
 </PreferenceScreen>

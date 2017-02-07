@@ -33,7 +33,7 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
                 this.getClass().getName().contains("1x1") ? R.layout.widget_1x1 : R.layout.widget_2x1);
             views.setTextColor(R.id.lblWidgetTor, Color.GRAY);
             views.setTextColor(R.id.lblWidgetText, Color.GRAY);
-            setWidgetColors(R.id.lay1x1, context, views, true);
+            setWidgetColors(R.id.lay1x1, context, views);
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
 
@@ -46,15 +46,11 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
 
     }
 
-    static public void setWidgetColors(int id, Context context, RemoteViews views, boolean setColor) {
+    private void setWidgetColors(int id, Context context, RemoteViews views) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String theme = sharedPref.getString(SettingsActivity.KEY_PREF_THEME, "0");
+        String theme = sharedPref.getString(SettingsActivity.KEY_PREF_THEME_WIDGET, "0");
         int themeInt = Integer.parseInt(theme);
         int color = Colorer.getBackgoundColorFromTheme(themeInt);
-        if (setColor) {
-            views.setInt(id, "setBackgroundColor", color);
-        } else {
-            views.setInt(id, "setBackground", color);
-        }
+        views.setInt(id, "setBackgroundColor", color);
     }
 }

@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.pasha.termo"
         minSdkVersion 21
         targetSdkVersion 24
         versionCode 1
-        versionName "1.20160925"
+        versionName "1.20170207"
     }
     lintOptions {
         disable 'Overdraw', 'IconDuplicatesConfig', 'IconDipSize'

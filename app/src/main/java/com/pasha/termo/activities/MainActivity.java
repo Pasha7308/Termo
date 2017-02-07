@@ -3,12 +3,10 @@ package com.pasha.termo.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -84,11 +82,6 @@ public class MainActivity extends Activity {
      	imgGraph.setImageBitmap(null);
         new DownloadWebpageText().execute(lblTextTermo, lblTextTor, imgGraphCollected);
     	new DownloadWebpageGraph().execute(getString(R.string.strUrlGraph), imgGraph);
-
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String theme = sharedPref.getString(SettingsActivity.KEY_PREF_THEME, "");
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(theme);
     }
 
     private void setTypeFace(TextView textView) {
