@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layComplex"
+    android:layout_width="72dp"
+    android:layout_height="72dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@drawable/back2"
+    android:layout_margin="@dimen/widget_margin">
+
+    <TextView
+        android:id="@+id/lblWidgetText"
+        android:text="@string/strWidgetText"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="top|start"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp"
+        android:layout_marginTop="-4dp"/>
+
+    <TextView
+        android:id="@+id/lblWidgetTor"
+        android:text="@string/strWidgetTor"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp"
+        android:layout_marginBottom="-3dp"/>
+
+ 	<Button
+        android:id="@+id/btnWidRefresh"
+ 	    style="?android:attr/buttonStyleSmall"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+	    android:layout_gravity="top|end"
+        android:background="@drawable/perm_group_sync_settings"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-2dp"/>
+
+    <TextView
+        android:id="@+id/lblWidgetTime"
+        android:text="@string/strWidgetTime"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:textColor="@android:color/darker_gray"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="0dp"
+        android:textSize="10sp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imgvWidget"
+        android:layout_width="28dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/strGraphDescription"
+        android:layout_marginStart="2dp"
+        android:layout_gravity="start|bottom" />
+
+</FrameLayout>

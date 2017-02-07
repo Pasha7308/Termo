@@ -1,7 +1,6 @@
 package com.pasha.termo.utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -29,8 +28,8 @@ public class DateUtils {
         }
         return date;
     }
-    public static String timeToString(Date date, boolean is1x1) {
-        SimpleDateFormat sdf = new SimpleDateFormat(is1x1 ? "HH\nmm" : "HH:mm", Locale.getDefault());
+    public static String timeToString(Date date, boolean isComplex) {
+        SimpleDateFormat sdf = new SimpleDateFormat(isComplex ? "HH\nmm" : "HH:mm", Locale.getDefault());
         return sdf.format(date);
     }
 }

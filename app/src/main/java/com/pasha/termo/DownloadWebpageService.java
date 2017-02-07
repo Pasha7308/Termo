@@ -59,21 +59,23 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
         for (int widgetId : allWidgetIds) {
 
-            boolean is1x1 = callerClass.getName().contains("WeatherAppWidgetProvider1x1");
+            boolean isComplex = callerClass.getName().contains("WeatherAppWidgetProviderComplex");
 
-            String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), is1x1, false);
-            String tempIao = TempRounder.round(dto.getServerIao().getTemp(), is1x1, true);
+            RemoteViews remoteViews = new RemoteViews(
+                context.getPackageName(), isComplex ? R.layout.widget_complex : R.layout.widget_simple);
 
-            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), is1x1 ? R.layout.widget_1x1 : R.layout.widget_2x1);
-
+            String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), true, false);
             remoteViews.setTextViewText(R.id.lblWidgetText, tempTermo);
             remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(tempTermo));
 
-            remoteViews.setTextViewText(R.id.lblWidgetTor, tempIao);
-            remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(tempIao));
+            if (isComplex) {
+                String tempIao = TempRounder.round(dto.getServerIao().getTemp(), true, true);
+                remoteViews.setTextViewText(R.id.lblWidgetTor, tempIao);
+                remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(tempIao));
+            }
 
             if (dto.getUpdated().GetDateTime() != null) {
-                remoteViews.setTextViewText(R.id.lblWidgetTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), is1x1));
+                remoteViews.setTextViewText(R.id.lblWidgetTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), isComplex));
                 remoteViews.setTextColor(R.id.lblWidgetTime, Color.WHITE);
             }
 
@@ -83,7 +85,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
             if (wPx != 0 && hPx != 0) {
                 bm = Bitmap.createBitmap(wPx, hPx, Bitmap.Config.ARGB_8888);
             } else {
-                bm = Bitmap.createBitmap(is1x1 ? 192 : 192 * 2, 192, Bitmap.Config.ARGB_8888);
+                bm = Bitmap.createBitmap(192, 192, Bitmap.Config.ARGB_8888);
             }
             DrawManager.drawOnBitmap(bm, dto, true);
             remoteViews.setBitmap(R.id.imgvWidget, "setImageBitmap", bm);
@@ -99,7 +101,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
             Intent showIntent = new Intent(context, MainActivity.class);
             PendingIntent pendingIntentShow = PendingIntent.getActivity(context, 0, showIntent, 0);
-            remoteViews.setOnClickPendingIntent(is1x1 ? R.id.lay1x1 : R.id.lay2x1, pendingIntentShow);
+            remoteViews.setOnClickPendingIntent(isComplex ? R.id.layComplex : R.id.laySimple, pendingIntentShow);
 
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }

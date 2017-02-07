@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/laySimple"
+             android:layout_width="72dp"
+             android:layout_height="64dp"
+             android:orientation="vertical"
+             android:layout_gravity="center"
+             android:background="@drawable/back2"
+             android:layout_margin="@dimen/widget_margin">
+
+    <Button
+        android:id="@+id/btnWidRefresh"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="top|end"
+        android:background="@drawable/perm_group_sync_settings"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-2dp"/>
+
+    <TextView
+        android:id="@+id/lblWidgetText"
+        android:text="@string/strWidgetText"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36sp"
+        android:layout_marginTop="5sp"
+        />
+
+</FrameLayout>

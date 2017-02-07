@@ -29,11 +29,14 @@ public class WeatherAppWidgetProvider extends AppWidgetProvider {
 //        Log.i(LOG, "NAME " + this.getClass().getName());
 
         for (int appWidgetId : appWidgetIds) {
-            RemoteViews views = new RemoteViews(context.getPackageName(),
-                this.getClass().getName().contains("1x1") ? R.layout.widget_1x1 : R.layout.widget_2x1);
-            views.setTextColor(R.id.lblWidgetTor, Color.GRAY);
+            boolean isComplex = this.getClass().getName().contains("Complex");
+            RemoteViews views = new RemoteViews(
+                context.getPackageName(), isComplex ? R.layout.widget_complex : R.layout.widget_simple);
             views.setTextColor(R.id.lblWidgetText, Color.GRAY);
-            setWidgetColors(R.id.lay1x1, context, views);
+            if (isComplex) {
+                views.setTextColor(R.id.lblWidgetTor, Color.GRAY);
+            }
+            setWidgetColors(isComplex ? R.id.layComplex : R.id.laySimple, context, views);
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
 
