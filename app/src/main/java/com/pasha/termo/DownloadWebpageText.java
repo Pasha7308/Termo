@@ -1,13 +1,5 @@
 package com.pasha.termo;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Objects;
-
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
@@ -18,9 +10,9 @@ import com.pasha.termo.model.WeatherDto;
 
 public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
 
-    protected TextView objTermo;
-    protected TextView objIao;
-    protected ImageView imgGraphCollected;
+    private TextView objTermo;
+    private TextView objIao;
+    private ImageView imgGraphCollected;
 
     protected WeatherDto doInBackground(
         Object... objs)
@@ -50,7 +42,7 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
             Canvas canvas = new Canvas(bm);
             imgGraphCollected.setImageBitmap(bm);
 
-            DrawView drawView = new DrawView(false);
+            DrawView drawView = new DrawView(false, false);
             drawView.draw(canvas, dto.getOldValues());
         }
     }

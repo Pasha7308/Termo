@@ -25,11 +25,13 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
     private Intent intent;
     private Context context;
     private Class callerClass;
-    private int wPx = 0;
-    private int hPx = 0;
     private NotificationCreator notificationCreator;
+    private boolean isAddNotofication = true;
+    private boolean isDarkWidget = false;
+    private boolean isDarkNotification = false;
 
     protected WeatherDto doInBackground(
+
         Object... objs)
     {
         intent = (Intent)objs[0];
@@ -57,28 +59,29 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         for (int widgetId : allWidgetIds) {
 
             WidgetType widgetType = WidgetType.fromString(callerClass.getName());
+            readSettings();
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), widgetType.getLayoutId());
 
             String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), true, false);
             // tempTermo = "-24.5";
             remoteViews.setTextViewText(R.id.lblWidgetText, tempTermo);
-            remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(tempTermo));
+            remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(tempTermo, isDarkWidget));
 
             if (widgetType.isSecontTempVisible()) {
                 String tempIao = TempRounder.round(dto.getServerIao().getTemp(), true, true);
                 remoteViews.setTextViewText(R.id.lblWidgetTor, tempIao);
-                remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(tempIao));
+                remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(tempIao, isDarkWidget));
             }
 
             if (dto.getUpdated().GetDateTime() != null && widgetType.isTimeVisible()) {
                 remoteViews.setTextViewText(R.id.lblWidgetTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), widgetType.isTimeSingleLine()));
-                remoteViews.setTextColor(R.id.lblWidgetTime, Color.WHITE);
+                remoteViews.setTextColor(R.id.lblWidgetTime, isDarkWidget ? Color.WHITE : Color.BLACK);
             }
 
             if (widgetType.isGraphVisible()) {
                 Bitmap bm = Bitmap.createBitmap(192, 192, Bitmap.Config.ARGB_8888);
-                DrawManager.drawOnBitmap(bm, dto, true);
+                DrawManager.drawOnBitmap(bm, dto, true, isDarkWidget);
                 remoteViews.setBitmap(R.id.imgvWidget, "setImageBitmap", bm);
             }
 
@@ -100,15 +103,18 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
-        if (isAddNotofication()) {
-            notificationCreator.addNotification(dto);
+        if (isAddNotofication) {
+            notificationCreator.addNotification(dto, isDarkNotification);
         }
     }
 
-    private boolean isAddNotofication() {
+    private void readSettings() {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         String add = sharedPref.getString(SettingsActivity.KEY_PREF_IS_NOTIFICATION, "1");
-        int addInt = Integer.parseInt(add);
-        return addInt == 1;
+        isAddNotofication = add.equals("1");
+        String darkWidget = sharedPref.getString(SettingsActivity.KEY_PREF_THEME_WIDGET, "0");
+        isDarkWidget = darkWidget.equals("0");
+        String darkNotification = sharedPref.getString(SettingsActivity.KEY_PREF_THEME_NOTIFICATION, "0");
+        isDarkNotification = darkNotification.equals("0");
     }
 }

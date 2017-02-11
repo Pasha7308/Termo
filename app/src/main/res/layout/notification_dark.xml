@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/imgvNot"
-        android:layout_width="60dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:paddingStart="2dp"
         tools:ignore="RtlSymmetry"
@@ -24,7 +24,6 @@
         android:text="@string/strTextTemoCaption"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearance"
-        android:paddingStart="10dp"
         tools:ignore="RtlSymmetry"
         android:layout_toEndOf="@+id/imgvNot"
         android:layout_centerVertical="true"/>

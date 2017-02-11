@@ -4,15 +4,13 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.preference.PreferenceManager;
+import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
 import com.pasha.termo.activities.MainActivity;
-import com.pasha.termo.activities.SettingsActivity;
 import com.pasha.termo.model.WeatherDto;
 import com.pasha.termo.utils.Colorer;
 import com.pasha.termo.utils.DateUtils;
@@ -26,26 +24,27 @@ class NotificationCreator {
         this.context = context;
     }
 
-    void addNotification(WeatherDto dto) {
+    void addNotification(WeatherDto dto, boolean isDarkNotification) {
         Resources res = context.getResources();
 
         String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), false, false);
         String tempIao = TempRounder.round(dto.getServerIao().getTemp(), false, true);
         RemoteViews remoteViews = new RemoteViews(
-                context.getPackageName(), isDarkTheme() ? R.layout.notification_dark : R.layout.notification_light);
+                context.getPackageName(), isDarkNotification ? R.layout.notification_dark : R.layout.notification_light);
         remoteViews.setTextViewText(R.id.lblNotTextTermo, tempTermo);
-        remoteViews.setTextColor(R.id.lblNotTextTermo, Colorer.getColorOutOfTemp(tempTermo));
+        remoteViews.setTextColor(R.id.lblNotTextTermo, Colorer.getColorOutOfTemp(tempTermo, isDarkNotification));
 
         remoteViews.setTextViewText(R.id.lblNotTextIao, tempIao);
-        remoteViews.setTextColor(R.id.lblNotTextIao, Colorer.getColorOutOfTemp(tempIao));
+        remoteViews.setTextColor(R.id.lblNotTextIao, Colorer.getColorOutOfTemp(tempIao, isDarkNotification));
 
         remoteViews.setViewVisibility(R.id.lblNotTime, (dto.getUpdated().GetDateTime() != null) ? 1 : 0);
         if (dto.getUpdated().GetDateTime() != null) {
             remoteViews.setTextViewText(R.id.lblNotTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), false));
+            remoteViews.setTextColor(R.id.lblNotTime, isDarkNotification ? Color.WHITE : Color.BLACK);
         }
 
-        Bitmap bm = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
-        DrawManager.drawOnBitmap(bm, dto, true);
+        Bitmap bm = Bitmap.createBitmap(512, 256, Bitmap.Config.ARGB_8888);
+        DrawManager.drawOnBitmap(bm, dto, false, isDarkNotification);
         remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
 
         NotificationCompat.Builder mBuilder =
@@ -64,11 +63,5 @@ class NotificationCreator {
                 (android.app.NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         int notificationId = res.getInteger(R.integer.notificationId);
         mNotificationManager.notify(notificationId, mBuilder.build());
-    }
-    private boolean isDarkTheme() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String theme = sharedPref.getString(SettingsActivity.KEY_PREF_THEME_NOTIFICATION, "0");
-        int themeInt = Integer.parseInt(theme);
-        return themeInt == 0;
     }
 }

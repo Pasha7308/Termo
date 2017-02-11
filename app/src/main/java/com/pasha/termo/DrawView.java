@@ -1,16 +1,12 @@
 package com.pasha.termo;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class DrawView {
     private static final String LOG = "DrawView";
@@ -31,17 +27,17 @@ public class DrawView {
     private int height;
     private int textHeight;
 
-    public DrawView(boolean isWidget) {
+    public DrawView(boolean isWidget, boolean isDark) {
         this.isWidget = isWidget;
 
         paint = new Paint();
-        paint.setColor(isWidget ? Color.WHITE : Color.BLACK);
+        paint.setColor(isDark ? Color.WHITE : Color.BLACK);
         paint.setAntiAlias(true);
         paint.setDither(true);
         paint.setStrokeWidth(2);
 
         paintGrid = new Paint();
-        paintGrid.setColor(isWidget ? Color.LTGRAY : Color.GRAY);
+        paintGrid.setColor(isDark ? Color.LTGRAY : Color.GRAY);
         paintGrid.setAntiAlias(true);
         paintGrid.setDither(true);
     }
