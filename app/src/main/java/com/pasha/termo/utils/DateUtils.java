@@ -28,8 +28,8 @@ public class DateUtils {
         }
         return date;
     }
-    public static String timeToString(Date date, boolean isComplex) {
-        SimpleDateFormat sdf = new SimpleDateFormat(isComplex ? "HH\nmm" : "HH:mm", Locale.getDefault());
+    public static String timeToString(Date date, boolean isSingleLine) {
+        SimpleDateFormat sdf = new SimpleDateFormat(!isSingleLine ? "HH\nmm" : "HH:mm", Locale.getDefault());
         return sdf.format(date);
     }
 }

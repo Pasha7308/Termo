@@ -16,7 +16,6 @@
 				android:layout_width="100dp"
 				android:layout_height="100dp"
 				android:layout_below="@+id/lblTextIao"
-				android:layout_alignParentLeft="true"
 				android:layout_alignParentStart="true" />
 			<TextView
 				android:id="@+id/lblCaption"
@@ -24,7 +23,7 @@
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"
 				android:text="@string/strCaption"
-				android:layout_alignParentLeft="true" />
+				android:layout_alignParentStart="true" />
 
 			<TextView
 				android:id="@+id/lblTextTermo"
@@ -34,7 +33,7 @@
 				android:layout_centerHorizontal="true"
 				android:text="@string/strText"
 				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_alignParentLeft="true" />
+				android:layout_alignParentStart="true" />
 
 			<TextView
 				android:id="@+id/lblTextIao"
@@ -44,7 +43,7 @@
 				android:layout_centerHorizontal="true"
 				android:text="@string/strText"
 				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_alignParentLeft="true" />
+				android:layout_alignParentStart="true" />
 
 		</RelativeLayout>
 
@@ -58,10 +57,8 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_alignParentEnd="true"
-				android:layout_alignParentRight="true"
 				android:contentDescription="@string/strGraphDescription"
 				android:scaleType="fitStart"
-				android:layout_alignParentLeft="true"
 				android:layout_alignParentStart="true" />
 		</RelativeLayout>
 	</LinearLayout>

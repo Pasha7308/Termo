@@ -2,8 +2,9 @@
 <resources>
 
   <string name="app_name">Termo</string>
-  <string name="widget_name_complex">Termo (complex)</string>
-  <string name="widget_name_simple">Termo (simple)</string>
+  <string name="widget_name_complex">Termo (Complex)</string>
+  <string name="widget_name_simple">Termo (Simple)</string>
+  <string name="widget_name_4x1">Termo (Wide 4X1)</string>
   <string name="strCaption">Current temp</string>
   <string name="strGraphDescription">Temp graph</string>
   <string name="strTextTemoCaption">Termo: </string>
@@ -11,7 +12,7 @@
   <string name="strText">Not ready</string>
   <string name="strWidgetText">n/a</string>
   <string name="strWidgetTor">n/t</string>
-  <string name="strWidgetTime">ti\nme</string>
+  <string name="strWidgetTime">time</string>
   <string name="strNotTime">time</string>
   <string name="menu_settings">Settings</string>
   <string name="strUrlGraph">http://termo.tomsk.ru/img.png</string>

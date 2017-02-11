@@ -1,4 +1,4 @@
-package com.pasha.termo;
+package com.pasha.termo.widgetProviders;
 
 public class WeatherAppWidgetProviderComplex extends WeatherAppWidgetProvider
 {

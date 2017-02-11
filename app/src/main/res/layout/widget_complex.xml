@@ -40,18 +40,6 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="-2dp"/>
 
-    <TextView
-        android:id="@+id/lblWidgetTime"
-        android:text="@string/strWidgetTime"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_gravity="start|bottom"
-        android:textColor="@android:color/darker_gray"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginBottom="0dp"
-        android:textSize="10sp"
-        android:visibility="invisible" />
-
     <ImageView
         android:id="@+id/imgvWidget"
         android:layout_width="28dp"

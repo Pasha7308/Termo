@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:supportsRtl="true">
 
-        <receiver android:name=".WeatherAppWidgetProviderComplex" android:label="@string/widget_name_complex" android:icon="@drawable/ic_launcher">
+        <receiver android:name=".widgetProviders.WeatherAppWidgetProviderComplex" android:label="@string/widget_name_complex" android:icon="@drawable/ic_launcher">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
@@ -22,7 +22,7 @@
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/weather_widget_complex_provider_info" />
         </receiver>
 
-        <receiver android:name=".WeatherAppWidgetProviderSimple" android:label="@string/widget_name_simple" android:icon="@drawable/ic_launcher">
+        <receiver android:name=".widgetProviders.WeatherAppWidgetProviderSimple" android:label="@string/widget_name_simple" android:icon="@drawable/ic_launcher">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
@@ -30,6 +30,16 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/weather_widget_simple_provider_info" />
         </receiver>
+
+        <receiver android:name=".widgetProviders.WeatherAppWidgetProvider4x1" android:label="@string/widget_name_4x1" android:icon="@drawable/ic_launcher">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/weather_widget_4x1_provider_info" />
+        </receiver>
+
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name" >
