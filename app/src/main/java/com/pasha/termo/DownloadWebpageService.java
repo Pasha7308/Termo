@@ -59,23 +59,23 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
         for (int widgetId : allWidgetIds) {
 
-            boolean isComplex = callerClass.getName().contains("WeatherAppWidgetProviderComplex");
+            boolean isSimple = !callerClass.getName().contains("WeatherAppWidgetProviderComplex");
 
             RemoteViews remoteViews = new RemoteViews(
-                context.getPackageName(), isComplex ? R.layout.widget_complex : R.layout.widget_simple);
+                context.getPackageName(), !isSimple ? R.layout.widget_complex : R.layout.widget_simple);
 
             String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), true, false);
             remoteViews.setTextViewText(R.id.lblWidgetText, tempTermo);
             remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(tempTermo));
 
-            if (isComplex) {
+            if (!isSimple) {
                 String tempIao = TempRounder.round(dto.getServerIao().getTemp(), true, true);
                 remoteViews.setTextViewText(R.id.lblWidgetTor, tempIao);
                 remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(tempIao));
             }
 
             if (dto.getUpdated().GetDateTime() != null) {
-                remoteViews.setTextViewText(R.id.lblWidgetTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), isComplex));
+                remoteViews.setTextViewText(R.id.lblWidgetTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), !isSimple));
                 remoteViews.setTextColor(R.id.lblWidgetTime, Color.WHITE);
             }
 
@@ -97,11 +97,17 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
             clickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
 
             PendingIntent pendingIntentUpdate = PendingIntent.getBroadcast(context, 0, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            remoteViews.setOnClickPendingIntent(R.id.btnWidRefresh, pendingIntentUpdate);
+            if (isSimple) {
+                remoteViews.setOnClickPendingIntent(R.id.laySimple, pendingIntentUpdate);
+            } else {
+                remoteViews.setOnClickPendingIntent(R.id.btnWidRefresh, pendingIntentUpdate);
+            }
 
-            Intent showIntent = new Intent(context, MainActivity.class);
-            PendingIntent pendingIntentShow = PendingIntent.getActivity(context, 0, showIntent, 0);
-            remoteViews.setOnClickPendingIntent(isComplex ? R.id.layComplex : R.id.laySimple, pendingIntentShow);
+            if (!isSimple) {
+                Intent showIntent = new Intent(context, MainActivity.class);
+                PendingIntent pendingIntentShow = PendingIntent.getActivity(context, 0, showIntent, 0);
+                remoteViews.setOnClickPendingIntent(!isSimple ? R.id.layComplex : R.id.laySimple, pendingIntentShow);
+            }
 
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }

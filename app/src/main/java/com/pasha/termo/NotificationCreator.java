@@ -32,7 +32,7 @@ class NotificationCreator {
         String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), false, false);
         String tempIao = TempRounder.round(dto.getServerIao().getTemp(), false, true);
         RemoteViews remoteViews = new RemoteViews(
-                context.getPackageName(), isDarkTheme() ? R.layout.notificationdark : R.layout.notificationlight);
+                context.getPackageName(), isDarkTheme() ? R.layout.notification_dark : R.layout.notification_light);
         remoteViews.setTextViewText(R.id.lblNotTextTermo, tempTermo);
         remoteViews.setTextColor(R.id.lblNotTextTermo, Colorer.getColorOutOfTemp(tempTermo));
 
