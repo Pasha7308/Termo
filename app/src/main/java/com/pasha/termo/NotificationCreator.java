@@ -28,7 +28,7 @@ class NotificationCreator {
         Resources res = context.getResources();
 
         String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), false, false);
-        String tempIao = TempRounder.round(dto.getServerIao().getTemp(), false, true);
+        String tempIao = TempRounder.round(dto.getServerIao().getTemp(), false, false);
         RemoteViews remoteViews = new RemoteViews(
                 context.getPackageName(), isDarkNotification ? R.layout.notification_dark : R.layout.notification_light);
         remoteViews.setTextViewText(R.id.lblNotTextTermo, tempTermo);
@@ -42,6 +42,8 @@ class NotificationCreator {
             remoteViews.setTextViewText(R.id.lblNotTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), false));
             remoteViews.setTextColor(R.id.lblNotTime, isDarkNotification ? Color.WHITE : Color.BLACK);
         }
+        remoteViews.setTextColor(R.id.lblNotTermo, isDarkNotification ? Color.WHITE : Color.BLACK);
+        remoteViews.setTextColor(R.id.lblNotIao, isDarkNotification ? Color.WHITE : Color.BLACK);
 
         Bitmap bm = Bitmap.createBitmap(512, 256, Bitmap.Config.ARGB_8888);
         DrawManager.drawOnBitmap(bm, dto, false, isDarkNotification);

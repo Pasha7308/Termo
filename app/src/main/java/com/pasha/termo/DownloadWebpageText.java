@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pasha.termo.model.WeatherDto;
+import com.pasha.termo.utils.TempRounder;
 
 public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
 
@@ -35,8 +36,8 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
         WeatherDto dto)
     {
         if (dto != null) {
-            objTermo.setText(termoToString(dto.getServerTermo().getTemp()));
-            objIao.setText(termoToString(dto.getServerIao().getTemp()));
+            objTermo.setText(TempRounder.termoToString(dto.getServerTermo().getTemp()));
+            objIao.setText(TempRounder.termoToString(dto.getServerIao().getTemp()));
 
             Bitmap bm = Bitmap.createBitmap(192 * 2, 192, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bm);
@@ -45,16 +46,5 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
             DrawView drawView = new DrawView(false, false);
             drawView.draw(canvas, dto.getOldValues());
         }
-    }
-
-    private String termoToString(Integer termo) {
-        if (termo == null) {
-            return "";
-        }
-        double dTemp = (double)termo / 10;
-        if (dTemp < -10) {
-            dTemp = Math.round(dTemp);
-        }
-        return String.valueOf(dTemp);
     }
 }

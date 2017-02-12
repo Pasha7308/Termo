@@ -86,7 +86,7 @@ public enum WidgetType {
     }
 
     public boolean isTimeSingleLine() {
-        return (this == Wide4x1);
+        return false;
     }
 
     public boolean isRefreshByButton() {

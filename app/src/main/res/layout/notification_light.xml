@@ -4,7 +4,8 @@
                 android:layout_width= "match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/notification_light">
+                android:background="@drawable/notification_light"
+                android:alpha="0.4">
 
     <ImageView
         android:id="@+id/imgvNot"
@@ -18,53 +19,6 @@
         android:layout_centerVertical="true"/>
 
     <TextView
-        android:id="@+id/lblNotTermo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/strTextTemoCaption"
-        android:textColor="@android:color/white"
-        android:textAppearance="?android:attr/textAppearance"
-        tools:ignore="RtlSymmetry"
-        android:layout_toEndOf="@+id/imgvNot"
-        android:layout_centerVertical="true"/>
-
-    <TextView
-        android:id="@+id/lblNotTextTermo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/strWidgetText"
-        android:textColor="@android:color/white"
-        android:textSize="40sp"
-        android:paddingStart="5dp"
-        tools:ignore="RtlSymmetry"
-        android:layout_toEndOf="@+id/lblNotTermo"
-        android:layout_centerVertical="true"/>
-
-    <TextView
-        android:id="@+id/lblNotIao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/strTextIaoCaption"
-        android:textAppearance="?android:attr/textAppearance"
-        android:textColor="@android:color/white"
-        android:paddingStart="10dp"
-        tools:ignore="RtlSymmetry"
-        android:layout_toEndOf="@+id/lblNotTextTermo"
-        android:layout_centerVertical="true"/>
-
-    <TextView
-        android:id="@+id/lblNotTextIao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/strWidgetTor"
-        android:textColor="@android:color/white"
-        android:textSize="40sp"
-        android:paddingStart="5dp"
-        tools:ignore="RtlSymmetry"
-        android:layout_toEndOf="@+id/lblNotIao"
-        android:layout_centerVertical="true"/>
-
-    <TextView
         android:id="@+id/lblNotTime"
         android:text="@string/strNotTime"
         android:layout_height="wrap_content"
@@ -75,5 +29,59 @@
         tools:ignore="SmallSp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="5dp"/>
+
+    <TextView
+        android:id="@+id/lblNotTextTermo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/strWidgetText"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry"
+        android:layout_alignBottom="@+id/imgvNot"
+        android:layout_toEndOf="@+id/imgvNot"
+        android:layout_marginTop="-5dp"
+        android:layout_marginBottom="-5dp"/>
+
+    <TextView
+        android:id="@+id/lblNotTermo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/strTextTemoCaption"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearance"
+        android:paddingStart="20dp"
+        android:layout_marginTop="-2dp"
+        tools:ignore="RtlSymmetry"
+        android:layout_alignTop="@+id/imgvNot"
+        android:layout_toEndOf="@+id/imgvNot"/>
+
+    <TextView
+        android:id="@+id/lblNotTextIao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/strWidgetTor"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry"
+        android:layout_alignBottom="@+id/imgvNot"
+        android:layout_toEndOf="@+id/lblNotTextTermo"
+        android:layout_marginTop="-5dp"
+        android:layout_marginBottom="-5dp"/>
+
+    <TextView
+        android:id="@+id/lblNotIao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/strTextIaoCaption"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/white"
+        android:paddingStart="20dp"
+        android:layout_marginTop="-2dp"
+        tools:ignore="RtlSymmetry"
+        android:layout_alignTop="@+id/imgvNot"
+        android:layout_toEndOf="@+id/lblNotTextTermo"/>
 
 </RelativeLayout>

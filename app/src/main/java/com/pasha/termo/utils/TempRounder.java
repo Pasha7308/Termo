@@ -22,4 +22,12 @@ public class TempRounder {
             return String.valueOf(tempDouble);
         }
     }
+
+    static public String termoToString(Integer termo) {
+        if (termo == null) {
+            return "";
+        }
+        double dTemp = (double)termo / 10;
+        return String.valueOf(dTemp);
+    }
 }
