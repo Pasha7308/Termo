@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="app_name">Termo</string>
+  <string name="widget_name_complex">Termo (Сложный)</string>
+  <string name="widget_name_simple">Termo (Простой)</string>
+  <string name="widget_name_4x1">Termo (Штрокий 4X1)</string>
+  <string name="strCaption">Текущая температура</string>
+  <string name="strGraphDescription">График</string>
+  <string name="strTextTemoCaption">Termo: </string>
+  <string name="strTextIaoCaption">Iao: </string>
+  <string name="strText">Not ready</string>
+  <string name="strWidgetText">n/a</string>
+  <string name="strWidgetTor">n/t</string>
+  <string name="strWidgetTime">time</string>
+  <string name="strNotTime">time</string>
+  <string name="menu_settings">Настройки</string>
+  <string name="strUrlGraph">http://termo.tomsk.ru/img.png</string>
+  <string name="strDoRequest">Запрос</string>
+  <string name="strNoNetwork">Нет связи</string>
+  <string name="strNotificationTemplateTermo" formatted="false">Termo: %s</string>
+  <string name="strNotificationTemplateIao" formatted="false">IAO: %s</string>
+
+  <string name="pref_themeWidgetTitle">Цвет виджета</string>
+  <string name="pref_themeWidgetTitleDialog">Цвет виджета</string>
+  <string name="pref_themeWidgetValuesDefault">0</string>
+  <string name="pref_themeNotificationTitle">Цвет уведомления</string>
+  <string name="pref_themeNotificationTitleDialog">Цвет уведомления</string>
+  <string name="pref_themeNotificationValuesDefault">0</string>
+  <string name="pref_isNotificationTitle">Показывать уведомление</string>
+  <string name="pref_isNotificationTitleDialog">Показывать уведомление</string>
+  <string name="pref_isNotificationValuesDefault">1</string>
+  <string name="pref_digitsInNotificationTitle">Иконка уведомления</string>
+  <string name="pref_digitsInNotificationTitleDialog">Иконка уведомления</string>
+  <string name="pref_digitsInNotificationValuesDefault">1</string>
+</resources>

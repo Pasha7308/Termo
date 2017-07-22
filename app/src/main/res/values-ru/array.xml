@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_themeEntries">
+        <item>Темный</item>
+        <item>Светлый</item>
+    </string-array>
+    <string-array name="pref_themeValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="pref_isNotificationEntries">
+        <item>Показать</item>
+        <item>Скрыть</item>
+    </string-array>
+    <string-array name="pref_isNotificationValues">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="pref_digitsInEntries">
+        <item>Иконка</item>
+        <item>Цифры</item>
+    </string-array>
+    <string-array name="pref_digitsInValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+</resources>
