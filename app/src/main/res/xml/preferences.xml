@@ -21,4 +21,11 @@
         android:entries="@array/pref_isNotificationEntries"
         android:entryValues="@array/pref_isNotificationValues"
         android:defaultValue="@string/pref_isNotificationValuesDefault" />
+    <ListPreference
+        android:key="pref_digits_notification"
+        android:title="@string/pref_digitsInNotificationTitle"
+        android:dialogTitle="@string/pref_digitsInNotificationTitleDialog"
+        android:entries="@array/pref_digitsInEntries"
+        android:entryValues="@array/pref_digitsInValues"
+        android:defaultValue="@string/pref_digitsInNotificationValuesDefault" />
 </PreferenceScreen>

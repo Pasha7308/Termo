@@ -4,6 +4,9 @@ public class TempRounder {
 
     static public String round(Integer termo, boolean is1x1, boolean shorter)
     {
+        if (termo == null) {
+            return "0";
+        }
         boolean makeShort = true;
         if (shorter && is1x1) {
             if ((termo >= 0) && (termo < 100)) {
