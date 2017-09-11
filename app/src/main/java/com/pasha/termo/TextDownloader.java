@@ -1,15 +1,9 @@
 package com.pasha.termo;
 
-import android.net.Credentials;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pasha.termo.model.ServerValueDto;
 import com.pasha.termo.model.WeatherDto;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
