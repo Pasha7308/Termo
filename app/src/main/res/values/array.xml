@@ -16,11 +16,19 @@
         <item>1</item>
         <item>0</item>
     </string-array>
-    <string-array name="pref_digitsInEntries">
+    <string-array name="pref_digitsInNotificationEntries">
         <item>Icon</item>
         <item>Digits</item>
     </string-array>
-    <string-array name="pref_digitsInValues">
+    <string-array name="pref_digitsInNotificationValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="pref_notificationGraphEntries">
+        <item>Normal</item>
+        <item>Bold</item>
+    </string-array>
+    <string-array name="pref_notificationGraphValues">
         <item>0</item>
         <item>1</item>
     </string-array>

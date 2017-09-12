@@ -33,4 +33,6 @@
   <string name="pref_digitsInNotificationTitle">Иконка уведомления</string>
   <string name="pref_digitsInNotificationTitleDialog">Иконка уведомления</string>
   <string name="pref_digitsInNotificationValuesDefault">1</string>
+  <string name="pref_notificationGraphTitleDialog">График в уведомлении</string>
+  <string name="pref_notificationGraphValuesDefault">0</string>
 </resources>

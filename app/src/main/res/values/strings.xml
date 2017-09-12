@@ -33,4 +33,6 @@
   <string name="pref_digitsInNotificationTitle">Notification Icon</string>
   <string name="pref_digitsInNotificationTitleDialog">Notification Icon</string>
   <string name="pref_digitsInNotificationValuesDefault">1</string>
+  <string name="pref_notificationGraphTitleDialog">Notification Graph</string>
+  <string name="pref_notificationGraphValuesDefault">0</string>
 </resources>

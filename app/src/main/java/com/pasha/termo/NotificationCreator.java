@@ -24,7 +24,8 @@ class NotificationCreator {
         this.context = context;
     }
 
-    void addNotification(WeatherDto dto, boolean isDarkNotification, boolean isDigitsInNotification) {
+    void addNotification(WeatherDto dto, boolean isDarkNotification,
+            boolean isDigitsInNotification, boolean isNotificationGraphBold) {
         Resources res = context.getResources();
 
         int temp = dto.getServerTermo().getTemp();
@@ -40,14 +41,14 @@ class NotificationCreator {
 
         remoteViews.setViewVisibility(R.id.lblNotTime, (dto.getUpdated().GetDateTime() != null) ? 1 : 0);
         if (dto.getUpdated().GetDateTime() != null) {
-            remoteViews.setTextViewText(R.id.lblNotTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), false));
+            remoteViews.setTextViewText(R.id.lblNotTime, DateUtils.timeToString(dto.getUpdated().GetDateTime(), true));
             remoteViews.setTextColor(R.id.lblNotTime, isDarkNotification ? Color.WHITE : Color.BLACK);
         }
         remoteViews.setTextColor(R.id.lblNotTermo, isDarkNotification ? Color.WHITE : Color.BLACK);
         remoteViews.setTextColor(R.id.lblNotIao, isDarkNotification ? Color.WHITE : Color.BLACK);
 
         Bitmap bm = Bitmap.createBitmap(512, 256, Bitmap.Config.ARGB_8888);
-        DrawManager.drawOnBitmap(bm, dto, false, isDarkNotification);
+        DrawManager.drawOnBitmap(bm, dto, isNotificationGraphBold, isDarkNotification);
         remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
 
         NotificationCompat.Builder mBuilder =

@@ -30,6 +30,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
     private boolean isDarkWidget = false;
     private boolean isDarkNotification = false;
     private boolean isDigitsInNotification = true;
+    private boolean isNotificationGraphBold = false;
 
     protected WeatherDto doInBackground(
 
@@ -105,7 +106,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
         if (isAddNotofication) {
-            notificationCreator.addNotification(dto, isDarkNotification, isDigitsInNotification);
+            notificationCreator.addNotification(dto, isDarkNotification, isDigitsInNotification, isNotificationGraphBold);
         }
     }
 
@@ -119,5 +120,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         isDarkNotification = darkNotification.equals("0");
         String digitsInNotification = sharedPref.getString(SettingsActivity.KEY_PREF_DIGITS_NOTIFICATION, "1");
         isDigitsInNotification = digitsInNotification.equals("1");
+        String notificationGraph = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_GRAPH, "0");
+        isNotificationGraphBold = notificationGraph.equals("1");
     }
 }
