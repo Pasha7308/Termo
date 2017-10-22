@@ -17,6 +17,7 @@
 				android:layout_height="100dp"
 				android:layout_below="@+id/lblTextIao"
 				android:layout_alignParentStart="true" />
+
 			<TextView
 				android:id="@+id/lblCaption"
 				android:layout_width="wrap_content"
@@ -29,21 +30,37 @@
 				android:id="@+id/lblTextTermo"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@id/lblCaption"
-				android:layout_centerHorizontal="true"
 				android:text="@string/strText"
 				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_alignParentStart="true" />
+				android:layout_below="@+id/lblTermo"
+				android:layout_alignEnd="@+id/lblTermo"/>
+
+			<TextView
+				android:id="@+id/lblTermo"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/strTextTemoCaption"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_below="@+id/lblCaption"
+				android:layout_alignEnd="@+id/lblCaption"/>
 
 			<TextView
 				android:id="@+id/lblTextIao"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@id/lblTextTermo"
-				android:layout_centerHorizontal="true"
 				android:text="@string/strText"
 				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_alignParentStart="true" />
+				android:layout_below="@+id/lblIao"
+				android:layout_alignEnd="@+id/lblIao"/>
+
+			<TextView
+				android:id="@+id/lblIao"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/strTextIaoCaption"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_below="@+id/lblTextTermo"
+				android:layout_alignEnd="@+id/lblTextTermo"/>
 
 		</RelativeLayout>
 
