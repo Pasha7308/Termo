@@ -15,7 +15,7 @@ import java.net.URL;
 public class TextDownloader {
 
     private static final String LOG = "TextDownloader";
-    static private final String url = "http://termospring-pasha7308.rhcloud.com/weather";
+    static private final String url = "https://termotomsk-183603.appspot.com/weather";
 
     public WeatherDto downloadUrl()
     {
@@ -61,7 +61,7 @@ public class TextDownloader {
         return new String(buffer);
     }
 
-    public WeatherDto processIt(
+    private WeatherDto processIt(
         String strIn)
     {
         WeatherDto dto = null;
