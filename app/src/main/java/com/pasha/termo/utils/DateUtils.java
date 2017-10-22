@@ -3,9 +3,10 @@ package com.pasha.termo.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateUtils {
-    private static final String DATE_TIME_PATTERN_SEC = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ";
+    private static final String DATE_TIME_PATTERN_SEC = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     public static String dateToString(Date date) {
         if (date == null) {
@@ -19,7 +20,9 @@ public class DateUtils {
         if (string == null || string.isEmpty()) {
             return null;
         }
+
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_TIME_PATTERN_SEC, Locale.getDefault());
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date = null;
         try {
             date = sdf.parse(string);
