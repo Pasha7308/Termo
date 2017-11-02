@@ -7,9 +7,9 @@ android {
     defaultConfig {
         applicationId "com.pasha.termo"
         minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 201710222
-        versionName "201710222"
+        targetSdkVersion 26
+        versionCode 201710311
+        versionName "201710311"
         setProperty("archivesBaseName", "TermoTomsk-$versionName")
     }
     lintOptions {

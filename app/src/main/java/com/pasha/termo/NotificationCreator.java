@@ -75,7 +75,7 @@ class NotificationCreator {
             return resource;
         } else if (temp >= 0 && temp <= 5) {
             resource = R.drawable.ic_00p;
-        } else if (temp < 0 && temp >= 5) {
+        } else if (temp < 0 && temp >= -5) {
             resource = R.drawable.ic_00m;
         } else if (temp > 310) {
             resource = R.drawable.ic_30pp;
