@@ -65,7 +65,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), widgetType.getLayoutId());
 
-            String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), true, false);
+            String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), true, true);
             // tempTermo = "-24.5";
             remoteViews.setTextViewText(R.id.lblWidgetText, tempTermo);
             remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(tempTermo, isDarkWidget));
