@@ -19,6 +19,7 @@ import com.pasha.termo.utils.TempRounder;
 
 class NotificationCreator {
     private Context context;
+    final String channelId = "Chanel1";
 
     NotificationCreator(Context context) {
         this.context = context;
@@ -54,6 +55,7 @@ class NotificationCreator {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(isDigitsInNotification ? getIcon(temp) : R.drawable.ic_stat_notification)
+//                        .setSmallIcon(Icon.createWithBitmap(bm))
                         .setContent(remoteViews)
                         .setAutoCancel(false);
 
