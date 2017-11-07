@@ -65,15 +65,15 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), widgetType.getLayoutId());
 
-            String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), true, true);
+            String tempTermo = TempRounder.round(dto.getServerTermo().getTemp(), !widgetType.isSimple(), true);
             // tempTermo = "-24.5";
             remoteViews.setTextViewText(R.id.lblWidgetText, tempTermo);
-            remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(tempTermo, isDarkWidget));
+            remoteViews.setTextColor(R.id.lblWidgetText, Colorer.getColorOutOfTemp(String.valueOf(dto.getServerTermo().getTemp() / 10.0), isDarkWidget));
 
             if (widgetType.isSecontTempVisible()) {
-                String tempIao = TempRounder.round(dto.getServerIao().getTemp(), true, true);
+                String tempIao = TempRounder.round(dto.getServerIao().getTemp(), !widgetType.isSimple(), true);
                 remoteViews.setTextViewText(R.id.lblWidgetTor, tempIao);
-                remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(tempIao, isDarkWidget));
+                remoteViews.setTextColor(R.id.lblWidgetTor, Colorer.getColorOutOfTemp(String.valueOf(dto.getServerIao().getTemp() / 10.0), isDarkWidget));
             }
 
             if (dto.getUpdated().GetDateTime() != null && widgetType.isTimeVisible()) {

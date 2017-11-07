@@ -100,4 +100,8 @@ public enum WidgetType {
     public boolean isGraphVisible() {
         return ((this == Complex) || (this == Wide4x1));
     }
+
+    public boolean isSimple() {
+        return (this == Simple);
+    }
 }

@@ -20,7 +20,11 @@ public class TempRounder {
         double tempDouble = (double)termo / 10;
         if (makeShort) {
             int tempInt = (int)Math.round(tempDouble);
-            return String.valueOf(tempInt);
+            String ret = String.valueOf(tempInt);
+            if (ret.equals("0") && (termo < 0)) {
+                ret = "-" + ret;
+            }
+            return ret;
         } else {
             return String.valueOf(tempDouble);
         }
