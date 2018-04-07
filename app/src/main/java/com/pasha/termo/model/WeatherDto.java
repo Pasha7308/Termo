@@ -7,6 +7,7 @@ public class WeatherDto {
     private ServerValueDto serverTermo = new ServerValueDto();
     private ServerValueDto serverIao = new ServerValueDto();
     private ArrayList<Integer> oldValues;
+    private ArrayList<Integer> oldValuesIao;
 
     public JsonDateTime getUpdated() {
         return updated;
@@ -38,5 +39,13 @@ public class WeatherDto {
 
     public void setOldValues(ArrayList<Integer> oldValues) {
         this.oldValues = oldValues;
+    }
+
+    public ArrayList<Integer> getOldValuesIao() {
+        return oldValuesIao;
+    }
+
+    public void setOldValuesIao(ArrayList<Integer> oldValuesIao) {
+        this.oldValuesIao = oldValuesIao;
     }
 }
