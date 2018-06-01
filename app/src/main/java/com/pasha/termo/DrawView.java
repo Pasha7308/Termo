@@ -4,14 +4,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.util.Log;
 
 import com.pasha.termo.model.ServerType;
 
 import java.util.ArrayList;
 
 public class DrawView {
-    private static final String LOG = "DrawView";
+//    private static final String LOG = "DrawView";
 
     private final static int totalDegrees = 5;
 
@@ -30,7 +29,7 @@ public class DrawView {
     private int height;
     private int textHeight;
 
-    public DrawView(boolean isWidget, boolean isDark) {
+    private DrawView(boolean isWidget, boolean isDark) {
         this.isWidget = isWidget;
 
         paint = new Paint();
@@ -92,11 +91,12 @@ public class DrawView {
             int cur = max / 10 - i;
             canvas.drawText(String.valueOf(cur), 0, y + ((i == 0) ? textHeight : -2), paintGrid);
         }
-        Log.i(LOG, "Width: " + width + ", Height: " + height + ", min:" + min  + ", max:" + max );
+//        Log.i(LOG, "Width: " + width + ", Height: " + height + ", min:" + min  + ", max:" + max );
     }
 
     private int getCur(int cur) {
-        int ret = height - 2 - (int) (height * ((((double) cur) - min) / (double) (max - min)));
+        int ret;
+        ret = height - 2 - (int) (height * ((((double) cur) - min) / (double) (max - min)));
         return ret;
     }
 
@@ -153,7 +153,7 @@ public class DrawView {
 
     private void fillTemps(ArrayList<Integer> tempsIn) {
         temps = tempsIn;
-        Log.i(LOG, "size: " + temps.size());
+//        Log.i(LOG, "size: " + temps.size());
         if (isWidget) {
             // remove all values except last hour
             int size = temps.size();
@@ -161,6 +161,6 @@ public class DrawView {
                 temps.remove(0);
             }
         }
-        Log.i(LOG, "size: " + temps.size());
+//        Log.i(LOG, "size: " + temps.size());
     }
 }
