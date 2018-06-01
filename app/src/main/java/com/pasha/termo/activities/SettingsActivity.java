@@ -11,6 +11,8 @@ public class SettingsActivity extends PreferenceActivity {
     public static final String KEY_PREF_IS_NOTIFICATION = "pref_is_notification";
     public static final String KEY_PREF_DIGITS_NOTIFICATION = "pref_digits_notification";
     public static final String KEY_PREF_NOTIFICATION_GRAPH = "pref_notification_graph";
+    public static final String KEY_PREF_NOTIFICATION_SHOW_TERMO = "pref_notification_show_termo";
+    public static final String KEY_PREF_NOTIFICATION_SHOW_IAO = "pref_notification_show_iao";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.0"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.pasha.termo"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 201804071
-        versionName "201804071"
+        versionCode 201806011
+        versionName "201806011"
         setProperty("archivesBaseName", "TermoTomsk-$versionName")
     }
     lintOptions {
@@ -39,10 +39,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:27.0.0'
-    compile 'com.android.support:support-compat:27.0.0'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.8.3'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.3'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:support-compat:27.1.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.8.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
 }

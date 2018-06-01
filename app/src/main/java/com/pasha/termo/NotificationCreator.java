@@ -26,7 +26,8 @@ class NotificationCreator {
     }
 
     void addNotification(WeatherDto dto, boolean isDarkNotification,
-            boolean isDigitsInNotification, boolean isNotificationGraphBold) {
+                         boolean isDigitsInNotification, boolean isNotificationGraphBold,
+                         boolean isNotificationShowTermo, boolean isNotificationShowIao) {
         Resources res = context.getResources();
 
         int temp = dto.getServerTermo().getTemp();
@@ -48,12 +49,15 @@ class NotificationCreator {
         remoteViews.setTextColor(R.id.lblNotTermo, isDarkNotification ? Color.WHITE : Color.BLACK);
         remoteViews.setTextColor(R.id.lblNotIao, isDarkNotification ? Color.WHITE : Color.BLACK);
 
-        Bitmap bm = Bitmap.createBitmap(512, 256, Bitmap.Config.ARGB_8888);
-        DrawManager.drawOnBitmap(bm, dto, isNotificationGraphBold, isDarkNotification);
-        remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
+        if (isNotificationShowTermo || isNotificationShowIao) {
+            Bitmap bm = Bitmap.createBitmap(512, 256, Bitmap.Config.ARGB_8888);
+            DrawManager.drawOnBitmap(bm, dto, isNotificationGraphBold, isDarkNotification,
+                    isNotificationShowTermo, isNotificationShowIao);
+            remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
+        }
 
         NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(context)
+                new NotificationCompat.Builder(context, channelId)
                         .setSmallIcon(isDigitsInNotification ? getIcon(temp) : R.drawable.ic_stat_notification)
 //                        .setSmallIcon(Icon.createWithBitmap(bm))
                         .setContent(remoteViews)

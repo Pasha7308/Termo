@@ -31,6 +31,8 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
     private boolean isDarkNotification = false;
     private boolean isDigitsInNotification = true;
     private boolean isNotificationGraphBold = false;
+    private boolean isNotificationShowTermo = true;
+    private boolean isNotificationShowIao = false;
 
     protected WeatherDto doInBackground(
 
@@ -83,7 +85,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
             if (widgetType.isGraphVisible()) {
                 Bitmap bm = Bitmap.createBitmap(192, 192, Bitmap.Config.ARGB_8888);
-                DrawManager.drawOnBitmap(bm, dto, true, isDarkWidget);
+                DrawManager.drawOnBitmap(bm, dto, true, isDarkWidget, true, false);
                 remoteViews.setBitmap(R.id.imgvWidget, "setImageBitmap", bm);
             }
 
@@ -106,7 +108,9 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
         if (isAddNotofication) {
-            notificationCreator.addNotification(dto, isDarkNotification, isDigitsInNotification, isNotificationGraphBold);
+            notificationCreator.addNotification(dto, isDarkNotification,
+                    isDigitsInNotification, isNotificationGraphBold,
+                    isNotificationShowTermo, isNotificationShowIao);
         }
     }
 
@@ -122,5 +126,10 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         isDigitsInNotification = digitsInNotification.equals("1");
         String notificationGraph = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_GRAPH, "0");
         isNotificationGraphBold = notificationGraph.equals("1");
+
+        String notificationShowTermo = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_TERMO, "0");
+        isNotificationShowTermo = notificationShowTermo.equals("1");
+        String notificationShowIao = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_IAO, "0");
+        isNotificationShowIao = notificationShowIao.equals("1");
     }
 }

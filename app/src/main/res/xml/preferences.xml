@@ -35,4 +35,18 @@
         android:entries="@array/pref_notificationGraphEntries"
         android:entryValues="@array/pref_notificationGraphValues"
         android:defaultValue="@string/pref_notificationGraphValuesDefault" />
+    <ListPreference
+        android:key="pref_notification_show_termo"
+        android:title="@string/pref_notificationShowTermoTitleDialog"
+        android:dialogTitle="@string/pref_notificationShowTermoTitleDialog"
+        android:entries="@array/pref_notificationShowTermo"
+        android:entryValues="@array/pref_notificationShowTermoValues"
+        android:defaultValue="@string/pref_notificationShowTermoValuesDefault" />
+    <ListPreference
+        android:key="pref_notification_show_iao"
+        android:title="@string/pref_notificationShowIaoTitleDialog"
+        android:dialogTitle="@string/pref_notificationShowIaoTitleDialog"
+        android:entries="@array/pref_notificationShowIao"
+        android:entryValues="@array/pref_notificationShowIaoValues"
+        android:defaultValue="@string/pref_notificationShowIaoValuesDefault" />
 </PreferenceScreen>

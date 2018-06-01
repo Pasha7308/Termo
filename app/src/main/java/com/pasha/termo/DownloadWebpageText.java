@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pasha.termo.model.ServerType;
 import com.pasha.termo.model.WeatherDto;
 import com.pasha.termo.utils.TempRounder;
 
@@ -44,7 +45,8 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
             imgGraphCollected.setImageBitmap(bm);
 
             DrawView drawView = new DrawView(false, false);
-            drawView.draw(canvas, dto.getOldValues());
+            drawView.draw(canvas, dto.getOldValues(), ServerType.Termo);
+            //drawView.draw(canvas, dto.getOldValuesIao(), ServerType.Iao);
         }
     }
 }

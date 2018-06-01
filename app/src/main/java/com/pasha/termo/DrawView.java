@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.Log;
 
+import com.pasha.termo.model.ServerType;
+
 import java.util.ArrayList;
 
 public class DrawView {
@@ -16,6 +18,7 @@ public class DrawView {
     private boolean isWidget;
     private Paint paintGrid;
     private Paint paint;
+    private Paint paintIao;
 
     private Point pnt = new Point();
     private Point pntLast = new Point();
@@ -36,13 +39,19 @@ public class DrawView {
         paint.setDither(true);
         paint.setStrokeWidth(2);
 
+        paintIao = new Paint();
+        paintIao.setColor(isDark ? Color.argb(255, 128, 255, 128) : Color.argb(255, 0, 128, 0));
+        paintIao.setAntiAlias(true);
+        paintIao.setDither(true);
+        paintIao.setStrokeWidth(2);
+
         paintGrid = new Paint();
         paintGrid.setColor(isDark ? Color.LTGRAY : Color.GRAY);
         paintGrid.setAntiAlias(true);
         paintGrid.setDither(true);
     }
 
-    public void draw(Canvas canvas, ArrayList<Integer> temps) {
+    public void draw(Canvas canvas, ArrayList<Integer> temps, ServerType serverType) {
         fillTemps(temps);
         if (temps == null || temps.size() == 0) {
             return;
@@ -65,12 +74,12 @@ public class DrawView {
             }
             pnt.x = 20 + i * widthSingle;
             pnt.y = getCur(cur);
-            canvas.drawCircle(pnt.x, pnt.y, isWidget ? widgetLineSize / 2 : radius, paint);
+            canvas.drawCircle(pnt.x, pnt.y, isWidget ? widgetLineSize / 2 : radius, serverType == ServerType.Termo ? paint : paintIao);
             if (i == 0) {
                 copyPoint();
                 continue;
             }
-            canvas.drawLine(pntLast.x, pntLast.y, pnt.x, pnt.y, paint);
+            canvas.drawLine(pntLast.x, pntLast.y, pnt.x, pnt.y, serverType == ServerType.Termo ? paint : paintIao);
             copyPoint();
         }
     }
