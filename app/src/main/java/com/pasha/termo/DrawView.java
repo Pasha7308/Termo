@@ -29,7 +29,7 @@ public class DrawView {
     private int height;
     private int textHeight;
 
-    private DrawView(boolean isWidget, boolean isDark) {
+    DrawView(boolean isWidget, boolean isDark) {
         this.isWidget = isWidget;
 
         paint = new Paint();
