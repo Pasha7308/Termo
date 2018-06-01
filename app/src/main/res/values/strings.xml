@@ -27,14 +27,14 @@
   <string name="pref_themeNotificationValuesDefault">0</string>
   <string name="pref_isNotificationTitle">Show Notification</string>
   <string name="pref_isNotificationTitleDialog">Show Notification</string>
-  <string name="pref_isNotificationValuesDefault">1</string>
+  <string name="pref_isNotificationValuesDefault">true</string>
   <string name="pref_digitsInNotificationTitle">Notification Icon</string>
   <string name="pref_digitsInNotificationTitleDialog">Notification Icon</string>
   <string name="pref_digitsInNotificationValuesDefault">1</string>
   <string name="pref_notificationGraphTitleDialog">Notification Graph</string>
   <string name="pref_notificationGraphValuesDefault">0</string>
   <string name="pref_notificationShowTermoTitleDialog">Show Termo graph</string>
-  <string name="pref_notificationShowTermoValuesDefault">1</string>
+  <string name="pref_notificationShowTermoValuesDefault">true</string>
   <string name="pref_notificationShowIaoTitleDialog">Show Iao graph</string>
-  <string name="pref_notificationShowIaoValuesDefault">0</string>
+  <string name="pref_notificationShowIaoValuesDefault">false</string>
 </resources>

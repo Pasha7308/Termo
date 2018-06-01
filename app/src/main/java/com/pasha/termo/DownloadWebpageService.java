@@ -116,8 +116,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
 
     private void readSettings() {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String add = sharedPref.getString(SettingsActivity.KEY_PREF_IS_NOTIFICATION, "1");
-        isAddNotofication = add.equals("1");
+        isAddNotofication = sharedPref.getBoolean(SettingsActivity.KEY_PREF_IS_NOTIFICATION, true);
         String darkWidget = sharedPref.getString(SettingsActivity.KEY_PREF_THEME_WIDGET, "0");
         isDarkWidget = darkWidget.equals("0");
         String darkNotification = sharedPref.getString(SettingsActivity.KEY_PREF_THEME_NOTIFICATION, "0");
@@ -127,9 +126,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         String notificationGraph = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_GRAPH, "0");
         isNotificationGraphBold = notificationGraph.equals("1");
 
-        String notificationShowTermo = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_TERMO, "0");
-        isNotificationShowTermo = notificationShowTermo.equals("1");
-        String notificationShowIao = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_IAO, "0");
-        isNotificationShowIao = notificationShowIao.equals("1");
+        isNotificationShowTermo = sharedPref.getBoolean(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_TERMO, false);
+        isNotificationShowIao = sharedPref.getBoolean(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_IAO, false);
     }
 }

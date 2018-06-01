@@ -14,12 +14,10 @@
         android:entries="@array/pref_themeEntries"
         android:entryValues="@array/pref_themeValues"
         android:defaultValue="@string/pref_themeNotificationValuesDefault" />
-    <ListPreference
-        android:key="pref_is_notification"
+    <CheckBoxPreference
+        android:key="pref_is_notification1"
         android:title="@string/pref_isNotificationTitle"
         android:dialogTitle="@string/pref_isNotificationTitleDialog"
-        android:entries="@array/pref_isNotificationEntries"
-        android:entryValues="@array/pref_isNotificationValues"
         android:defaultValue="@string/pref_isNotificationValuesDefault" />
     <ListPreference
         android:key="pref_digits_notification"
@@ -35,18 +33,14 @@
         android:entries="@array/pref_notificationGraphEntries"
         android:entryValues="@array/pref_notificationGraphValues"
         android:defaultValue="@string/pref_notificationGraphValuesDefault" />
-    <ListPreference
-        android:key="pref_notification_show_termo"
+    <CheckBoxPreference
+        android:key="pref_notification_show_termo1"
         android:title="@string/pref_notificationShowTermoTitleDialog"
         android:dialogTitle="@string/pref_notificationShowTermoTitleDialog"
-        android:entries="@array/pref_notificationShowTermo"
-        android:entryValues="@array/pref_notificationShowTermoValues"
         android:defaultValue="@string/pref_notificationShowTermoValuesDefault" />
-    <ListPreference
-        android:key="pref_notification_show_iao"
+    <CheckBoxPreference
+        android:key="pref_notification_show_iao1"
         android:title="@string/pref_notificationShowIaoTitleDialog"
         android:dialogTitle="@string/pref_notificationShowIaoTitleDialog"
-        android:entries="@array/pref_notificationShowIao"
-        android:entryValues="@array/pref_notificationShowIaoValues"
         android:defaultValue="@string/pref_notificationShowIaoValuesDefault" />
 </PreferenceScreen>
