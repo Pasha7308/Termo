@@ -126,7 +126,7 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
         String notificationGraph = sharedPref.getString(SettingsActivity.KEY_PREF_NOTIFICATION_GRAPH, "0");
         isNotificationGraphBold = notificationGraph.equals("1");
 
-        isNotificationShowTermo = sharedPref.getBoolean(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_TERMO, false);
+        isNotificationShowTermo = sharedPref.getBoolean(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_TERMO, true);
         isNotificationShowIao = sharedPref.getBoolean(SettingsActivity.KEY_PREF_NOTIFICATION_SHOW_IAO, false);
     }
 }
