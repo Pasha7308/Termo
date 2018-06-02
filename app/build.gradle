@@ -8,8 +8,8 @@ android {
         applicationId "com.pasha.termo"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 201806011
-        versionName "201806011"
+        versionCode 201806021
+        versionName "201806021"
         setProperty("archivesBaseName", "TermoTomsk-$versionName")
     }
     lintOptions {
