@@ -67,6 +67,9 @@ public class DrawView {
 
         int widthSingle = (width - 20) / (temps.size() - 1);
         for (int i = 0; i < temps.size(); i++) {
+            if (serverType == ServerType.Iao && (i % 2 == 1)) {
+                continue;
+            }
             Integer cur = temps.get(i);
             if (cur == null) {
                 continue;
