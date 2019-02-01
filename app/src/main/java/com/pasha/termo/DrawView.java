@@ -10,13 +10,13 @@ import com.pasha.termo.model.ServerType;
 import java.util.ArrayList;
 
 public class DrawView {
-//    private static final String LOG = "DrawView";
+    private static final String LOG = "DrawView";
 
     private final static int totalDegrees = 5;
 
     private boolean isWidget;
     private Paint paintGrid;
-    private Paint paint;
+    private Paint paintTermo;
     private Paint paintIao;
 
     private Point pnt = new Point();
@@ -30,58 +30,63 @@ public class DrawView {
     private int textHeight;
 
     DrawView(boolean isWidget, boolean isDark) {
+        temps = new ArrayList<>();
         this.isWidget = isWidget;
 
-        paint = new Paint();
-        paint.setColor(isDark ? Color.WHITE : Color.BLACK);
-        paint.setAntiAlias(true);
-        paint.setDither(true);
-        paint.setStrokeWidth(2);
+        paintTermo = new Paint();
+        paintTermo.setColor(isDark ?
+                Color.WHITE :
+                Color.BLACK);
+        paintTermo.setAntiAlias(true);
+        paintTermo.setDither(true);
+        paintTermo.setStrokeWidth(2);
 
         paintIao = new Paint();
-        paintIao.setColor(isDark ? Color.argb(255, 128, 255, 128) : Color.argb(255, 0, 128, 0));
+        paintIao.setColor(isDark ?
+                Color.argb(255, 128, 255, 128) :
+                Color.argb(255, 0,   128, 0));
         paintIao.setAntiAlias(true);
         paintIao.setDither(true);
         paintIao.setStrokeWidth(2);
 
         paintGrid = new Paint();
-        paintGrid.setColor(isDark ? Color.LTGRAY : Color.GRAY);
+        paintGrid.setColor(isDark ?
+                Color.LTGRAY :
+                Color.GRAY);
         paintGrid.setAntiAlias(true);
         paintGrid.setDither(true);
     }
 
     public void draw(Canvas canvas, ArrayList<Integer> temps, ServerType serverType) {
         fillTemps(temps);
-        if (temps == null || temps.size() == 0) {
+        if (temps.size() == 0) {
             return;
         }
         getMinMax(canvas);
         int widgetLineSize = height / 15;
         int radius = ((height > width) ? width : height) / 50;
         if (isWidget) {
-            paint.setStrokeWidth(widgetLineSize);
+            paintTermo.setStrokeWidth(widgetLineSize);
         }
         if (!isWidget) {
             drawGrid(canvas);
         }
 
         int widthSingle = (width - 20) / (temps.size() - 1);
+        Paint paint = serverType == ServerType.Termo ? paintTermo : paintIao;
         for (int i = 0; i < temps.size(); i++) {
-            if (serverType == ServerType.Iao && (i % 2 == 1)) {
-                continue;
-            }
             Integer cur = temps.get(i);
             if (cur == null) {
                 continue;
             }
             pnt.x = 20 + i * widthSingle;
             pnt.y = getCur(cur);
-            canvas.drawCircle(pnt.x, pnt.y, isWidget ? widgetLineSize / 2 : radius, serverType == ServerType.Termo ? paint : paintIao);
+            canvas.drawCircle(pnt.x, pnt.y, isWidget ? (float)(widgetLineSize / 2) : radius, paint);
             if (i == 0) {
                 copyPoint();
                 continue;
             }
-            canvas.drawLine(pntLast.x, pntLast.y, pnt.x, pnt.y, serverType == ServerType.Termo ? paint : paintIao);
+            canvas.drawLine(pntLast.x, pntLast.y, pnt.x, pnt.y, paint);
             copyPoint();
         }
     }
@@ -145,7 +150,7 @@ public class DrawView {
             }
         }
         textHeight = height / 12;
-        paint.setTextSize(textHeight);
+        paintTermo.setTextSize(textHeight);
         paintGrid.setTextSize(textHeight);
     }
 
@@ -155,15 +160,12 @@ public class DrawView {
     }
 
     private void fillTemps(ArrayList<Integer> tempsIn) {
-        temps = tempsIn;
-//        Log.i(LOG, "size: " + temps.size());
-        if (isWidget) {
-            // remove all values except last hour
-            int size = temps.size();
-            for (int i = 0; i < (size - 12); i++) {
-                temps.remove(0);
+        temps.clear();
+        for (int i = 0; i < tempsIn.size(); i++) {
+            if (isWidget && i >= 12) {
+                break;
             }
+            temps.add(tempsIn.get(i));
         }
-//        Log.i(LOG, "size: " + temps.size());
     }
 }
