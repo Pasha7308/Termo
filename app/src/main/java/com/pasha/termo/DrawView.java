@@ -14,6 +14,7 @@ public class DrawView {
 
     private final static int totalDegrees = 5;
 
+    private boolean minmaxFound;
     private boolean isWidget;
     private Paint paintGrid;
     private Paint paintTermo;
@@ -30,6 +31,7 @@ public class DrawView {
     private int textHeight;
 
     DrawView(boolean isWidget, boolean isDark) {
+        minmaxFound = false;
         temps = new ArrayList<>();
         this.isWidget = isWidget;
 
@@ -109,6 +111,9 @@ public class DrawView {
     }
 
     private void getMinMax(Canvas canvas) {
+        if (minmaxFound) {
+            return;
+        }
         int minReal = 9999;
         int maxReal = -9999;
         int last = 9999;
@@ -152,6 +157,7 @@ public class DrawView {
         textHeight = height / 12;
         paintTermo.setTextSize(textHeight);
         paintGrid.setTextSize(textHeight);
+        minmaxFound = true;
     }
 
     private void copyPoint() {
