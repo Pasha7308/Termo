@@ -69,14 +69,27 @@ public class TextDownloader {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         /*  test values
-        dto.getOldValues().clear();
-        for (int i = 0; i < 20; i++) {
-            dto.getOldValues().add(i*-1 - 30);
-        }
-        dto.getOldValuesIao().clear();
-        for (int i = 0; i < 20; i++) {
-            dto.getOldValuesIao().add(i*-1 - 35);
+        try {
+            WeatherDto dto = new ObjectMapper().readValue(strIn, WeatherDto.class);
+
+            dto.getOldValues().clear();
+            for (int i = 0; i < 19; i++) {
+                dto.getOldValues().add(i*-2 - 10);
+            }
+            dto.getOldValues().add(dto.getOldValues().get(dto.getOldValues().size() - 1) - 5);
+            dto.getServerTermo().setTemp(dto.getOldValues().get(dto.getOldValues().size() - 1));
+
+            dto.getOldValuesIao().clear();
+            for (int i = 0; i < 19; i++) {
+                dto.getOldValuesIao().add(i*-2 - 35);
+            }
+            dto.getOldValuesIao().add(dto.getOldValuesIao().get(dto.getOldValuesIao().size() - 1) + 5);
+            dto.getServerIao().setTemp(dto.getOldValuesIao().get(dto.getOldValuesIao().size() - 1));
+            return dto;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         */
         return null;
