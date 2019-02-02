@@ -83,15 +83,53 @@ class NotificationCreator {
             resource = R.drawable.ic_00p;
         } else if (temp < 0 && temp >= -5) {
             resource = R.drawable.ic_00m;
-        } else if (temp > 310) {
-            resource = R.drawable.ic_30pp;
-        } else if (temp < -310) {
-            resource = R.drawable.ic_30mm;
+        } else if (temp > 395) {
+            resource = R.drawable.ic_39pp;
+        } else if (temp < -495) {
+            resource = R.drawable.ic_49mm;
         } else {
             double tempDouble = (double)temp / 10;
             temp = (int)Math.round(tempDouble);
             switch (temp) {
                 case -30: resource = R.drawable.ic_30m;
+                    break;
+                case -31: resource = R.drawable.ic_31m;
+                    break;
+                case -32: resource = R.drawable.ic_32m;
+                    break;
+                case -33: resource = R.drawable.ic_33m;
+                    break;
+                case -34: resource = R.drawable.ic_34m;
+                    break;
+                case -35: resource = R.drawable.ic_35m;
+                    break;
+                case -36: resource = R.drawable.ic_36m;
+                    break;
+                case -37: resource = R.drawable.ic_37m;
+                    break;
+                case -38: resource = R.drawable.ic_38m;
+                    break;
+                case -39: resource = R.drawable.ic_39m;
+                    break;
+                case -40: resource = R.drawable.ic_40m;
+                    break;
+                case -41: resource = R.drawable.ic_41m;
+                    break;
+                case -42: resource = R.drawable.ic_42m;
+                    break;
+                case -43: resource = R.drawable.ic_43m;
+                    break;
+                case -44: resource = R.drawable.ic_44m;
+                    break;
+                case -45: resource = R.drawable.ic_45m;
+                    break;
+                case -46: resource = R.drawable.ic_46m;
+                    break;
+                case -47: resource = R.drawable.ic_47m;
+                    break;
+                case -48: resource = R.drawable.ic_48m;
+                    break;
+                case -49: resource = R.drawable.ic_49m;
                     break;
                 case -20: resource = R.drawable.ic_20m;
                     break;
@@ -210,6 +248,24 @@ class NotificationCreator {
                 case 29: resource = R.drawable.ic_29p;
                     break;
                 case 30: resource = R.drawable.ic_30p;
+                    break;
+                case 31: resource = R.drawable.ic_31p;
+                    break;
+                case 32: resource = R.drawable.ic_32p;
+                    break;
+                case 33: resource = R.drawable.ic_33p;
+                    break;
+                case 34: resource = R.drawable.ic_34p;
+                    break;
+                case 35: resource = R.drawable.ic_35p;
+                    break;
+                case 36: resource = R.drawable.ic_36p;
+                    break;
+                case 37: resource = R.drawable.ic_37p;
+                    break;
+                case 38: resource = R.drawable.ic_38p;
+                    break;
+                case 39: resource = R.drawable.ic_39p;
                     break;
             }
         }
