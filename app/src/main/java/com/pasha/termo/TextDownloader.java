@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class TextDownloader {
 
@@ -55,22 +56,29 @@ public class TextDownloader {
         int len)
         throws IOException
     {
-        Reader reader = new InputStreamReader(stream, "UTF-8");
+        Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
         char[] buffer = new char[len];
-        reader.read(buffer);
-        return new String(buffer);
+        return (reader.read(buffer) > 0) ? new String(buffer) : "";
     }
 
     private WeatherDto processIt(
         String strIn)
     {
-        WeatherDto dto = null;
         try {
-            dto = new ObjectMapper().readValue(strIn, WeatherDto.class);
+            return new ObjectMapper().readValue(strIn, WeatherDto.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return dto;
+        /*  test values
+        dto.getOldValues().clear();
+        for (int i = 0; i < 20; i++) {
+            dto.getOldValues().add(i*-1 - 30);
+        }
+        dto.getOldValuesIao().clear();
+        for (int i = 0; i < 20; i++) {
+            dto.getOldValuesIao().add(i*-1 - 35);
+        }
+        */
+        return null;
     }
-
 }

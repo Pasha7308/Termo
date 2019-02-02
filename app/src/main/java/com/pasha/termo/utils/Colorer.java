@@ -8,7 +8,7 @@ public class Colorer {
         String tempString,
         boolean isDark)
     {
-        Double temp;
+        double temp;
         try {
             temp = Double.parseDouble(tempString);
         } catch (NullPointerException e) {

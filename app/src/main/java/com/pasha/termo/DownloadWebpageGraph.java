@@ -65,9 +65,8 @@ public class DownloadWebpageGraph extends AsyncTask<Object, Integer, Bitmap> {
         }
     }
 
-    public Bitmap readIt(
+    private Bitmap readIt(
         InputStream stream)
-        throws IOException
     {
     	return BitmapFactory.decodeStream(stream);
     }

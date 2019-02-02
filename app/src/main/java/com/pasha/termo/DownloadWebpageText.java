@@ -46,7 +46,7 @@ public class DownloadWebpageText extends AsyncTask<Object, Object, WeatherDto> {
 
             DrawView drawView = new DrawView(false, false);
             drawView.draw(canvas, dto.getOldValues(), ServerType.Termo);
-            //drawView.draw(canvas, dto.getOldValuesIao(), ServerType.Iao);
+            drawView.draw(canvas, dto.getOldValuesIao(), ServerType.Iao);
         }
     }
 }
