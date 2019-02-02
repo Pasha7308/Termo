@@ -161,10 +161,7 @@ public class DrawView {
 
     private void fillTemps(ArrayList<Integer> tempsIn) {
         temps.clear();
-        for (int i = 0; i < tempsIn.size(); i++) {
-            if (isWidget && i >= 12) {
-                break;
-            }
+        for (int i = isWidget ? tempsIn.size() - 12 : 0; i < tempsIn.size(); i++) {
             temps.add(tempsIn.get(i));
         }
     }
