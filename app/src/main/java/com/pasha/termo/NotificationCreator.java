@@ -1,5 +1,7 @@
 package com.pasha.termo;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
@@ -7,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
@@ -19,10 +22,14 @@ import com.pasha.termo.utils.TempRounder;
 
 class NotificationCreator {
     private Context context;
-    final String channelId = "Chanel1";
+    private NotificationManager notifManager;
+    private final String channelId = "Chanel1";
 
     NotificationCreator(Context context) {
         this.context = context;
+        if (notifManager == null) {
+            notifManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        }
     }
 
     void addNotification(WeatherDto dto, boolean isDarkNotification,
@@ -56,23 +63,31 @@ class NotificationCreator {
             remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            if (notifManager.getNotificationChannel(channelId) == null) {
+                NotificationChannel mChannel = new NotificationChannel(channelId, "", importance);
+                mChannel.enableVibration(false);
+                notifManager.createNotificationChannel(mChannel);
+            }
+        }
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context, channelId)
                         .setSmallIcon(isDigitsInNotification ? getIcon(temp) : R.drawable.ic_stat_notification)
 //                        .setSmallIcon(Icon.createWithBitmap(bm))
                         .setContent(remoteViews)
-                        .setAutoCancel(false);
+                        .setAutoCancel(false)
+                        .setContentTitle(null)
+                        .setContentText(null);
 
         Intent resultIntent = new Intent(context, MainActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-        android.app.NotificationManager mNotificationManager =
-                (android.app.NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
         int notificationId = res.getInteger(R.integer.notificationId);
-        mNotificationManager.notify(notificationId, mBuilder.build());
+        notifManager.notify(notificationId, mBuilder.build());
     }
 
     private int getIcon(Integer temp) {
