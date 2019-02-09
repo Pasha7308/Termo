@@ -23,7 +23,6 @@ import com.pasha.termo.utils.TempRounder;
 class NotificationCreator {
     private Context context;
     private NotificationManager notifManager;
-    private final String channelId = "Chanel1";
 
     NotificationCreator(Context context) {
         this.context = context;
@@ -63,10 +62,13 @@ class NotificationCreator {
             remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
         }
 
+        String channelId  = context.getString(R.string.default_notification_channel_id);
+        String channelName = context.getString(R.string.default_notification_channel_name);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_LOW;
             if (notifManager.getNotificationChannel(channelId) == null) {
-                NotificationChannel mChannel = new NotificationChannel(channelId, "", importance);
+                NotificationChannel mChannel = new NotificationChannel(channelId, channelName, importance);
                 mChannel.enableVibration(false);
                 notifManager.createNotificationChannel(mChannel);
             }
@@ -78,7 +80,8 @@ class NotificationCreator {
                         .setContent(remoteViews)
                         .setAutoCancel(false)
                         .setContentTitle(null)
-                        .setContentText(null);
+                        .setContentText(null)
+                        .setDefaults(0);
 
         Intent resultIntent = new Intent(context, MainActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);

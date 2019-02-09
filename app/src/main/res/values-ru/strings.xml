@@ -34,4 +34,6 @@
   <string name="pref_notificationGraphValuesDefault">0</string>
   <string name="pref_notificationShowTermoTitleDialog">Показывать график Termo</string>
   <string name="pref_notificationShowIaoTitleDialog">Показывать график Iao</string>
+
+  <string name="default_notification_channel_name">Termo</string>
 </resources>
