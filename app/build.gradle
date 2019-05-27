@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    buildToolsVersion "29.0.0 rc3"
 
     defaultConfig {
         applicationId "com.pasha.termo"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 201902022
-        versionName "201902022"
+        versionCode 201905272
+        versionName "201905272"
         setProperty("archivesBaseName", "TermoTomsk-$versionName")
     }
     lintOptions {

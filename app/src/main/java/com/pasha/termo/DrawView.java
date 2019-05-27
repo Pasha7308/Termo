@@ -60,10 +60,10 @@ public class DrawView {
     }
 
     public void draw(Canvas canvas, ArrayList<Integer> temps, ServerType serverType) {
-        fillTemps(temps);
-        if (temps.size() == 0) {
+        if (temps.size() < 2) {
             return;
         }
+        fillTemps(temps);
         getMinMax(canvas);
         int widgetLineSize = height / 15;
         int radius = ((height > width) ? width : height) / 50;

@@ -11,7 +11,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true">
 
         <receiver android:name=".widgetProviders.WeatherAppWidgetProviderComplex" android:label="@string/widget_name_complex" android:icon="@drawable/ic_launcher">
             <intent-filter>
