@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class DateUtils {
-    private static final String DATE_TIME_PATTERN_SEC = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    private static final String DATE_TIME_PATTERN_SEC = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ";
 
     public static String dateToString(Date date) {
         if (date == null) {
@@ -22,7 +22,7 @@ public class DateUtils {
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_TIME_PATTERN_SEC, Locale.getDefault());
-        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        sdf.setTimeZone(TimeZone.getTimeZone("TSK"));
         Date date = null;
         try {
             date = sdf.parse(string);
