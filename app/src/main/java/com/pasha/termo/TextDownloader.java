@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 public class TextDownloader {
 
     private static final String LOG = "TextDownloader";
-    static private final String url = "https://termotomsk-183603.appspot.com/weather";
+    static private final String url = "http://pasha7308.asuscomm.com:8081/weather";
 
     public WeatherDto downloadUrl()
     {
