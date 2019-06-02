@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:background="@drawable/notification_dark">
+
+    <ImageView
+        android:id="@+id/imgvNot"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/strGraphDescription"
+        android:paddingStart="2dp"
+        android:paddingTop="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/lblNotTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="5dp"
+        android:text="@string/strNotTime"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/white"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/lblNotTextTermo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgvNot"
+        android:layout_marginTop="-5dp"
+        android:layout_marginBottom="-5dp"
+        android:layout_toEndOf="@+id/imgvNot"
+        android:paddingStart="15dp"
+        android:text="@string/strWidgetText"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/lblNotTermo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgvNot"
+        android:layout_marginTop="-2dp"
+        android:layout_toEndOf="@+id/imgvNot"
+        android:paddingStart="20dp"
+        android:text="@string/strTextTemoCaption"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/white"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/lblNotTextIao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgvNot"
+        android:layout_marginTop="-5dp"
+        android:layout_marginBottom="-5dp"
+        android:layout_toEndOf="@+id/lblNotTextTermo"
+        android:paddingStart="15dp"
+        android:text="@string/strWidgetTor"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/lblNotIao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgvNot"
+        android:layout_marginTop="-2dp"
+        android:layout_toEndOf="@+id/lblNotTextTermo"
+        android:paddingStart="20dp"
+        android:text="@string/strTextIaoCaption"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/white"
+        tools:ignore="RtlSymmetry" />
+
+</RelativeLayout>
