@@ -9,7 +9,7 @@ public class TempRounder {
         }
         boolean makeShort = true;
         if (shorter && is1x1) {
-            if ((termo >= 0) && (termo < 100)) {
+            if ((termo >= -100) && (termo < 100)) {
                 makeShort = false;
             }
         } else {

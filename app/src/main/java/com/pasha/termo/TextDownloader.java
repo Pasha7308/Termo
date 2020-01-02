@@ -32,8 +32,8 @@ public class TextDownloader {
             try {
                 URL url = new URL(strUrl);
                 conn = (HttpURLConnection) url.openConnection();
-                conn.setReadTimeout(10000); // milliseconds
-                conn.setConnectTimeout(150060); // milliseconds
+                conn.setReadTimeout(15000); // milliseconds
+                conn.setConnectTimeout(20000); // milliseconds
                 is = conn.getInputStream();
                 String strIn = readIt(is, len);
                 dto = processIt(strIn);

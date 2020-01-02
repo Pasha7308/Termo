@@ -23,7 +23,7 @@ public class ServerValueDto {
 
     public Integer getTemp() {
         return temp;
-//        return 288;
+//        return -288;
     }
 
     public void setTemp(Integer temp) {

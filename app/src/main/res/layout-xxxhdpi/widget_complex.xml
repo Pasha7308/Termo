@@ -3,7 +3,6 @@
     android:id="@+id/layComplex"
     android:layout_width="72dp"
     android:layout_height="72dp"
-    android:orientation="vertical"
     android:layout_gravity="center"
     android:background="@drawable/back2"
     android:layout_margin="@dimen/widget_margin">
@@ -15,39 +14,37 @@
         android:layout_width="wrap_content"
         android:layout_gravity="top|start"
         android:textColor="@android:color/white"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30sp"
-        android:layout_marginTop="-4dp"
-        android:layout_marginStart="3dp"/>
+        android:textSize="26sp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginStart="8dp"/>
 
     <TextView
         android:id="@+id/lblWidgetTor"
         android:text="@string/strWidgetTor"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|start"
         android:textColor="@android:color/white"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30sp"
-        android:layout_marginBottom="-3dp"
-        android:layout_marginEnd="3dp"/>
+        android:textSize="26sp"
+        android:layout_marginBottom="-6dp"
+        android:layout_marginStart="8dp"/>
 
  	<Button
         android:id="@+id/btnWidRefresh"
  	    style="?android:attr/buttonStyleSmall"
         android:layout_width="24dp"
         android:layout_height="24dp"
-	    android:layout_gravity="top|end"
+	    android:layout_gravity="center_vertical|end"
         android:background="@drawable/perm_group_sync_settings"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="2dp"/>
+        android:layout_marginEnd="4dp"/>
 
     <ImageView
         android:id="@+id/imgvWidget"
-        android:layout_width="25dp"
+        android:layout_width="32dp"
         android:layout_height="32dp"
         android:contentDescription="@string/strGraphDescription"
-        android:layout_marginStart="2dp"
-        android:layout_gravity="start|bottom" />
+        android:layout_marginStart="8dp"
+        android:layout_gravity="start|center_vertical" />
 
 </FrameLayout>
