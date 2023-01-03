@@ -7,8 +7,8 @@ android {
         applicationId "com.pasha.termo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 202009271
-        versionName "202009271"
+        versionCode 202301031
+        versionName "202301031"
         setProperty("archivesBaseName", "TermoTomsk-$versionName")
     }
     buildTypes {
