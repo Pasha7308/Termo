@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.pasha.termo"
@@ -11,9 +10,6 @@ android {
         versionCode 202009271
         versionName "202009271"
         setProperty("archivesBaseName", "TermoTomsk-$versionName")
-    }
-    lintOptions {
-        disable 'Overdraw', 'IconDuplicatesConfig', 'IconDipSize'
     }
     buildTypes {
         release {
@@ -25,17 +21,14 @@ android {
         }
     }
     packagingOptions {
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/dependencies.txt'
-        exclude 'META-INF/LGPL2.1'
+        resources {
+            excludes += ['META-INF/DEPENDENCIES.txt', 'META-INF/LICENSE.txt', 'META-INF/NOTICE.txt', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/DEPENDENCIES', 'META-INF/notice.txt', 'META-INF/license.txt', 'META-INF/dependencies.txt', 'META-INF/LGPL2.1']
+        }
     }
+    lint {
+        disable 'Overdraw', 'IconDuplicatesConfig', 'IconDipSize'
+    }
+    namespace 'com.pasha.termo'
 }
 
 dependencies {
