@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import androidx.core.app.NotificationCompat;
@@ -61,6 +62,8 @@ class NotificationCreator {
             DrawManager.drawOnBitmap(bm, dto, isNotificationGraphBold, isDarkNotification,
                     isNotificationShowTermo, isNotificationShowIao);
             remoteViews.setBitmap(R.id.imgvNot, "setImageBitmap", bm);
+        } else {
+            remoteViews.setViewVisibility(R.id.imgvNot, View.GONE);
         }
 
         String channelId  = context.getString(R.string.default_notification_channel_id);
