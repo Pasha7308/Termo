@@ -1,23 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.pasha.termo"
         minSdkVersion 21
-        targetSdkVersion 31
-        versionCode 202301032
-        versionName "202301032"
+        targetSdkVersion 34
+        versionCode 202503101
+        versionName "202503101"
         setProperty("archivesBaseName", "TermoTomsk-$versionName")
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles 'proguard-rules.pro'
-        }
-        lintOptions {
-            abortOnError false
         }
     }
     packagingOptions {
@@ -33,10 +30,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.12.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.2'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.2'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.16.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.16.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0'
 }

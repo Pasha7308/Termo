@@ -95,11 +95,11 @@ public class DownloadWebpageService extends AsyncTask<Object, Integer, WeatherDt
             clickIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             clickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
 
-            PendingIntent pendingIntentUpdate = PendingIntent.getBroadcast(context, 0, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntentUpdate = PendingIntent.getBroadcast(context, 0, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             if (widgetType.isRefreshByButton()) {
                 remoteViews.setOnClickPendingIntent(R.id.btnWidRefresh, pendingIntentUpdate);
                 Intent showIntent = new Intent(context, MainActivity.class);
-                PendingIntent pendingIntentShow = PendingIntent.getActivity(context, 0, showIntent, 0);
+                PendingIntent pendingIntentShow = PendingIntent.getActivity(context, 0, showIntent, PendingIntent.FLAG_IMMUTABLE);
                 remoteViews.setOnClickPendingIntent(widgetType.getViewId(), pendingIntentShow);
             } else {
                 remoteViews.setOnClickPendingIntent(R.id.laySimple, pendingIntentUpdate);

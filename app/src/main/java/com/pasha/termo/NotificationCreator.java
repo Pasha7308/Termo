@@ -10,8 +10,9 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
-import androidx.core.app.NotificationCompat;
 import android.widget.RemoteViews;
+
+import androidx.core.app.NotificationCompat;
 
 import com.pasha.termo.activities.MainActivity;
 import com.pasha.termo.model.WeatherDto;
@@ -87,7 +88,7 @@ class NotificationCreator {
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         int notificationId = res.getInteger(R.integer.notificationId);
         notifManager.notify(notificationId, mBuilder.build());
